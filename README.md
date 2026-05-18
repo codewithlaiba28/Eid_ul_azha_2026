@@ -33,6 +33,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 This application embraces a "Premium & Dynamic" aesthetic. We aimed for an experience that doesn't just display information, but wows the user with careful typography, balanced spacing, and subtle ambient animations like floating stars and responsive navigation bars.
 
+## 🤖 AI Assistant
+
+This project was developed with the assistance of **Antigravity**, an advanced agentic coding AI by the Google DeepMind team.
+
 ## 📄 License
 
 This project is open-source and available for educational and personal use.
