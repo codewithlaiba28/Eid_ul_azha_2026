@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌙 Eid-ul-Adha 2026 Celebration Web App
 
-## Getting Started
+A premium, celestial-themed Next.js web application designed to celebrate Eid-ul-Adha. This project provides a beautiful, interactive experience featuring prayers, wishes, recipes, and specialized Eid packages, all wrapped in a stunning dark-mode celestial aesthetic.
+
+## ✨ Features
+
+- **Beautiful Celestial UI:** A visually stunning design with glowing elements, stars, a moon, and a rich dark color palette.
+- **Dynamic Micro-animations:** Smooth scrolling, floating particles, and hover effects that make the interface feel alive.
+- **Wishes & Greetings:** A dedicated section to generate and share beautiful Eid greetings.
+- **Eid Recipes:** A curated collection of traditional and modern Eid-ul-Adha recipes.
+- **Duas & Prayers:** Essential Islamic prayers and duas for the occasion.
+- **Qurbani Packages:** Specialized booking and package options for Qurbani services.
+
+## 🚀 Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Styling:** Vanilla CSS (TailwindCSS optional but replaced for custom glassmorphism & glows)
+- **Icons:** Lucide React
+- **Language:** TypeScript
+
+## 📦 Getting Started
 
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 Design Philosophy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This application embraces a "Premium & Dynamic" aesthetic. We aimed for an experience that doesn't just display information, but wows the user with careful typography, balanced spacing, and subtle ambient animations like floating stars and responsive navigation bars.
 
-## Learn More
+## 📄 License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open-source and available for educational and personal use.
