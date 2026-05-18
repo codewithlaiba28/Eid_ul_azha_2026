@@ -1,0 +1,345 @@
+"use client";
+
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { HeartHandshake, Copy, Check, MessageSquare, Volume2, Download, RefreshCw, Sparkles } from "lucide-react";
+import confetti from "canvas-confetti";
+
+interface Quote {
+  text: string;
+  category: string;
+  lang: "english" | "arabic";
+}
+
+export default function WishesPage() {
+  const [recipient, setRecipient] = useState("");
+  const [sender, setSender] = useState("");
+  const [selectedQuote, setSelectedQuote] = useState("");
+  const [cardTheme, setCardTheme] = useState<"emerald" | "gold" | "night" | "crimson">("emerald");
+  const [cardFont, setCardFont] = useState<"amiri" | "poppins">("amiri");
+  const [copied, setCopied] = useState(false);
+
+  const predefinedQuotes: Quote[] = [
+    {
+      text: "May the divine blessings of Allah bring you hope, faith, and joy on Eid-ul-Adha. May all your sacrifices be accepted and rewarded by the Almighty. Eid Mubarak!",
+      category: "Dua & Blessing",
+      lang: "english",
+    },
+    {
+      text: "Wishing you a warm and happy Eid. May this festival of sacrifice strengthen your faith, bring peace to your home, and fill your heart with divine bliss. Eid Mubarak!",
+      category: "Blessing",
+      lang: "english",
+    },
+    {
+      text: "تقبل الله منا ومنكم صالح الأعمال وجعلنا وإياكم من عواده بالخير واليمن والبركات. عيد أضحى مبارك وكل عام وأنتم بخير وصحة وعافية!",
+      category: "Traditional",
+      lang: "arabic",
+    },
+    {
+      text: "نسأل الله عز وجل أن يملأ قلوبكم بالإيمان، وبيوتكم بالاطمئنان، وأن يتقبل منكم الأضحية وصالح الطاعات. عيد سعيد مبارك!",
+      category: "Dua",
+      lang: "arabic",
+    },
+  ];
+
+  const cardThemes = {
+    emerald: {
+      bg: "bg-gradient-to-br from-[#0c1c11] to-[#040805]",
+      text: "text-zinc-100",
+      border: "border-secondary/40",
+      accent: "text-secondary",
+      glow: "shadow-[0_0_20px_rgba(229,169,59,0.15)]",
+    },
+    gold: {
+      bg: "bg-gradient-to-br from-[#1c180c] to-[#050403]",
+      text: "text-secondary",
+      border: "border-secondary/50",
+      accent: "text-white",
+      glow: "shadow-[0_0_25px_rgba(229,169,59,0.25)]",
+    },
+    night: {
+      bg: "bg-gradient-to-br from-[#090b10] to-[#030406]",
+      text: "text-zinc-100",
+      border: "border-white/10",
+      accent: "text-secondary",
+      glow: "shadow-[0_0_20px_rgba(255,255,255,0.05)]",
+    },
+    crimson: {
+      bg: "bg-gradient-to-br from-[#1b0808] to-[#050101]",
+      text: "text-zinc-100",
+      border: "border-white/10",
+      accent: "text-secondary",
+      glow: "shadow-[0_0_20px_rgba(239,68,68,0.1)]",
+    },
+  };
+
+  const handleSelectQuote = (text: string) => {
+    setSelectedQuote(text);
+    // Simple confetti pop
+    confetti({
+      particleCount: 20,
+      spread: 30,
+      colors: ["#e5a93b", "#ffffff"],
+    });
+  };
+
+  const getCombinedMessage = () => {
+    let msg = "";
+    if (recipient.trim()) msg += `To my dear ${recipient.trim()},\n\n`;
+    msg += selectedQuote || "Wishing you a very blessed and happy Eid ul Adha! May all your sacrifices be accepted by Allah. Eid Mubarak!";
+    if (sender.trim()) msg += `\n\nWith love,\n— ${sender.trim()}`;
+    return msg;
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(getCombinedMessage());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleWhatsApp = () => {
+    const textEncoded = encodeURIComponent(getCombinedMessage());
+    window.open(`https://api.whatsapp.com/send?text=${textEncoded}`, "_blank");
+  };
+
+  const handleSpeech = () => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(selectedQuote || "Eid Mubarak");
+      utterance.rate = 0.9;
+      if (selectedQuote.includes("الله")) {
+        utterance.lang = "ar-SA";
+      } else {
+        utterance.lang = "en-US";
+      }
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
+  return (
+    <div className="bg-transparent min-h-screen text-zinc-100 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto space-y-12">
+        
+        {/* Banner */}
+        <div className="text-center space-y-4 max-w-3xl mx-auto">
+          <span className="text-secondary font-semibold text-xs tracking-widest uppercase flex items-center justify-center gap-1.5">
+            <HeartHandshake className="w-4 h-4 text-secondary animate-pulse" />
+            <span>Wishes & Greeting Center</span>
+          </span>
+          <h1 className="text-4xl md:text-6xl font-amiri font-bold text-secondary tracking-wide text-gold-glow">
+            Custom Greeting Cards Studio
+          </h1>
+          <div className="w-24 h-1 bg-secondary rounded-full mx-auto" />
+          <p className="text-sm md:text-base text-zinc-300 font-light">
+            Design premium Eid greeting cards. Write your own words, select from our dua collection, and share with your loved ones!
+          </p>
+        </div>
+
+        {/* Studio Console Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left Console: Card Design Customizer (6 cols) */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 text-zinc-100">
+              <h3 className="text-lg font-bold text-white border-b border-white/5 pb-3 font-poppins">
+                Greeting Card Customizer
+              </h3>
+
+              {/* Form Input fields */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">To (Recipient)</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Dearest Mother"
+                    value={recipient}
+                    onChange={(e) => setRecipient(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-[#060c08] text-zinc-100 focus:outline-none focus:border-secondary text-sm font-poppins"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">From (Sender)</label>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={sender}
+                    onChange={(e) => setSender(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-[#060c08] text-zinc-100 focus:outline-none focus:border-secondary text-sm font-poppins"
+                  />
+                </div>
+              </div>
+
+              {/* Design Controls */}
+              <div className="grid grid-cols-2 gap-4 border-t border-white/5 pt-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest block">Color Theme</label>
+                  <select
+                    value={cardTheme}
+                    onChange={(e) => setCardTheme(e.target.value as any)}
+                    className="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-[#060c08] text-zinc-100 focus:outline-none focus:border-secondary text-sm font-poppins"
+                  >
+                    <option value="emerald" className="bg-zinc-900 text-zinc-100">Emerald Gold</option>
+                    <option value="gold" className="bg-zinc-900 text-zinc-100">Royal Gold</option>
+                    <option value="night" className="bg-zinc-900 text-zinc-100">Starry Night</option>
+                    <option value="crimson" className="bg-zinc-900 text-zinc-100">Crimson Amber</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest block">Card Font</label>
+                  <select
+                    value={cardFont}
+                    onChange={(e) => setCardFont(e.target.value as any)}
+                    className="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-[#060c08] text-zinc-100 focus:outline-none focus:border-secondary text-sm font-poppins"
+                  >
+                    <option value="amiri" className="bg-zinc-900 text-zinc-100">Traditional Amiri</option>
+                    <option value="poppins" className="bg-zinc-900 text-zinc-100">Sleek Poppins</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Custom Wishes Area */}
+              <div className="space-y-2 border-t border-white/5 pt-4">
+                <div className="flex justify-between items-center">
+                  <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Custom Greeting Text</label>
+                  <button
+                    onClick={() => handleSelectQuote(predefinedQuotes[Math.floor(Math.random() * predefinedQuotes.length)].text)}
+                    className="text-[10px] text-secondary hover:text-yellow-500 font-bold flex items-center gap-1 transition-colors"
+                  >
+                    <RefreshCw className="w-3 h-3 text-secondary" />
+                    <span>Load Random</span>
+                  </button>
+                </div>
+                <textarea
+                  rows={4}
+                  placeholder="Select a quote from our collection below, or write your own custom Eid greetings here..."
+                  value={selectedQuote}
+                  onChange={(e) => setSelectedQuote(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#060c08] text-zinc-100 focus:outline-none focus:border-secondary text-sm font-poppins"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right Console: Live Card Canvas Preview (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
+            <div
+              className={`w-full max-w-lg rounded-3xl p-8 border-4 border-double ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[380px] sm:h-[420px]`}
+            >
+              {/* Card visual patterns */}
+              <div className="absolute top-0 right-0 w-32 h-32 opacity-10 border-t-2 border-r-2 border-white rounded-tr-3xl" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 opacity-10 border-b-2 border-l-2 border-white rounded-bl-3xl" />
+              
+              {/* Crescent decoration */}
+              <div className="flex justify-center mb-2">
+                <span className="text-4xl animate-float">🌙</span>
+              </div>
+
+              {/* Message content */}
+              <div className="flex-grow flex flex-col justify-center items-center py-4 px-2 overflow-y-auto w-full">
+                {recipient.trim() && (
+                  <span className="text-xs font-semibold uppercase tracking-wider block mb-2 opacity-80 self-start">
+                    To my dear {recipient.trim()},
+                  </span>
+                )}
+                
+                <p
+                  className={`text-center font-light leading-relaxed ${
+                    cardFont === "amiri"
+                      ? "font-amiri text-2xl leading-normal tracking-wide"
+                      : "font-poppins text-sm sm:text-base"
+                  }`}
+                >
+                  {selectedQuote || "Wishing you a very blessed and happy Eid ul Adha! May all your sacrifices be accepted by Allah. Eid Mubarak!"}
+                </p>
+
+                {sender.trim() && (
+                  <span className="text-xs font-semibold block mt-4 opacity-80 self-end">
+                    With love, — {sender.trim()}
+                  </span>
+                )}
+              </div>
+
+              {/* Card Controls Panel */}
+              <div className="border-t border-white/10 pt-4 flex items-center justify-between z-10 w-full">
+                <button
+                  onClick={handleSpeech}
+                  className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 text-secondary transition-all"
+                  title="Speak wish aloud"
+                >
+                  <Volume2 className="w-5 h-5 text-secondary animate-pulse" />
+                </button>
+
+                <div className="flex items-center gap-2">
+                  {/* Copy */}
+                  <button
+                    onClick={handleCopy}
+                    className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 text-zinc-200 transition-all flex items-center gap-1.5 text-xs font-medium"
+                  >
+                    {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    <span>{copied ? "Copied!" : "Copy"}</span>
+                  </button>
+
+                  {/* Share WhatsApp */}
+                  <button
+                    onClick={handleWhatsApp}
+                    className="p-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 border border-transparent text-white transition-all flex items-center gap-1.5 text-xs font-semibold shadow-md"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>WhatsApp</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* PREMADE WISHES LIBRARY */}
+        <section className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl text-zinc-100">
+          <div className="flex items-center gap-2.5 mb-6 border-b border-white/5 pb-3">
+            <span className="text-3xl">📚</span>
+            <div>
+              <h2 className="text-2xl font-bold text-white font-poppins">Greetings & Dua Library</h2>
+              <p className="text-xs text-zinc-400">Click any card below to immediately load the greeting into your designer canvas above.</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {predefinedQuotes.map((quote, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.02, y: -4 }}
+                onClick={() => handleSelectQuote(quote.text)}
+                className="bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl p-5 shadow-lg cursor-pointer flex flex-col justify-between transition-all duration-300"
+              >
+                <div>
+                  <div className="flex justify-between items-center border-b border-white/5 pb-2 mb-3">
+                    <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">
+                      {quote.category}
+                    </span>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-secondary/15 text-secondary border border-secondary/20 font-bold">
+                      {quote.lang.toUpperCase()}
+                    </span>
+                  </div>
+                  
+                  <p className={`text-zinc-200 font-light leading-relaxed text-sm ${
+                    quote.lang === "arabic"
+                      ? "font-amiri text-2xl leading-normal text-right font-semibold"
+                      : "font-poppins text-xs"
+                  }`}>
+                    {quote.text}
+                  </p>
+                </div>
+                
+                <div className="text-[10px] text-secondary hover:text-yellow-500 font-bold text-right pt-3 mt-3 border-t border-white/5">
+                  Click to select →
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+      </div>
+    </div>
+  );
+}
