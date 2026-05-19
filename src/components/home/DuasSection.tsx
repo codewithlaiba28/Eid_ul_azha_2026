@@ -90,7 +90,7 @@ export default function DuasSection() {
         </div>
 
         {/* 3 Dua Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-center">
           {duas.map((dua) => (
             <motion.div
               key={dua.id}
@@ -98,7 +98,7 @@ export default function DuasSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="glassmorphism-dark rounded-3xl p-6 sm:p-8 border border-white/10 relative flex flex-col justify-between overflow-hidden group shadow-xl hover:shadow-[0_0_25px_rgba(229,169,59,0.25)] duration-500 text-zinc-100 bg-white/[0.02]"
+              className="glassmorphism-dark rounded-3xl p-5 sm:p-6 md:p-8 border border-white/10 relative flex flex-col justify-between overflow-hidden group shadow-xl hover:shadow-[0_0_25px_rgba(229,169,59,0.25)] duration-500 text-zinc-100 bg-white/[0.02]"
             >
               {/* Gold border pulse effect */}
               <div className="absolute -inset-[1px] bg-gradient-to-r from-secondary/0 via-secondary/40 to-gold/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer pointer-events-none" />
@@ -126,8 +126,8 @@ export default function DuasSection() {
                 </div>
 
                 {/* Arabic Text Display */}
-                <div className="text-center py-4 bg-white/[0.02] rounded-2xl border border-white/5 mb-5 px-3">
-                  <span className="font-amiri text-2xl md:text-3xl text-secondary leading-loose tracking-wide block dir-rtl">
+                <div className="text-center py-3 sm:py-4 bg-white/[0.02] rounded-2xl border border-white/5 mb-5 px-2 sm:px-3">
+                  <span className="font-amiri text-xl sm:text-2xl md:text-3xl text-secondary leading-loose tracking-wide block dir-rtl">
                     {dua.arabic}
                   </span>
                 </div>
