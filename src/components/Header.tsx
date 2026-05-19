@@ -58,7 +58,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-4 lg:gap-2">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-3 lg:gap-1.5">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -66,26 +66,28 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center gap-1.5 px-2.5 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-semibold whitespace-nowrap transition-all duration-300 ${
+                  className={`flex items-center gap-1 xl:gap-1.5 px-2 xl:px-3 py-1.5 rounded-full text-[10px] xl:text-xs font-semibold whitespace-nowrap transition-all duration-300 ${
                     isActive
                       ? "text-secondary bg-white/5 border border-secondary/35 shadow-[0_0_15px_rgba(229,169,59,0.1)]"
                       : "text-zinc-300 hover:text-white hover:bg-white/5 border border-transparent"
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
-                  <span>{link.name}</span>
+                  <Icon className="w-3 h-3 xl:w-3.5 xl:h-3.5" />
+                  <span className="hidden xl:inline">{link.name}</span>
+                  <span className="xl:hidden">{link.name.split(' ')[0]}</span>
                 </Link>
               );
             })}
           </nav>
 
           {/* Action buttons */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             <Link
               href="/bookings"
-              className="px-4 xl:px-6 py-2 rounded-full bg-secondary text-black font-semibold text-[11px] xl:text-xs whitespace-nowrap transition-all duration-300 btn-neon-gold shadow-[0_4px_15px_rgba(229,169,59,0.25)] animate-pulse-glow"
+              className="px-3 xl:px-6 py-2 rounded-full bg-secondary text-black font-semibold text-[10px] xl:text-xs whitespace-nowrap transition-all duration-300 btn-neon-gold shadow-[0_4px_15px_rgba(229,169,59,0.25)] animate-pulse-glow"
             >
-              Book Qurbani
+              <span className="hidden xl:inline">Book Qurbani</span>
+              <span className="xl:hidden">Book</span>
             </Link>
           </div>
 
