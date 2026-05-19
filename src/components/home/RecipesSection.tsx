@@ -115,7 +115,7 @@ export default function RecipesSection() {
         {/* Netflix style horizontal scroll row */}
         <div
           ref={rowRef}
-          className="flex overflow-x-auto gap-6 pb-8 snap-x scrollbar-none snap-mandatory scroll-smooth relative"
+          className="flex overflow-x-auto gap-4 sm:gap-6 pb-8 snap-x scrollbar-none snap-mandatory scroll-smooth relative"
           style={{ scrollbarWidth: "none" }}
         >
           {dishes.map((dish, i) => (
@@ -125,7 +125,7 @@ export default function RecipesSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="min-w-[280px] sm:min-w-[340px] max-w-[350px] snap-start rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-white/[0.02] backdrop-blur-md group relative flex flex-col justify-between"
+              className="min-w-[260px] sm:min-w-[300px] md:min-w-[340px] max-w-[350px] snap-start rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-white/[0.02] backdrop-blur-md group relative flex flex-col justify-between"
             >
               {/* Image Container with zoom */}
               <div className="relative h-56 w-full overflow-hidden">
