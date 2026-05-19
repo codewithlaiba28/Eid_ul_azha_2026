@@ -71,7 +71,7 @@ export default function PackagesSection() {
         </div>
 
         {/* 3D Flip Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-stretch mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 justify-center items-stretch mb-16">
           {packages.map((pkg, index) => (
             <motion.div
               key={pkg.id}
@@ -79,7 +79,7 @@ export default function PackagesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="flip-card w-full h-[450px] relative group"
+              className="flip-card w-full h-[450px] sm:h-[480px] relative group"
             >
               <div className="flip-card-inner w-full h-full duration-700 shadow-2xl rounded-2xl group-hover:shadow-[0_0_30px_rgba(229,169,59,0.35)]">
                 
@@ -181,29 +181,29 @@ export default function PackagesSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glassmorphism max-w-4xl mx-auto rounded-2xl border border-white/5 p-6 flex flex-col sm:flex-row items-center justify-around gap-6 text-center sm:text-left bg-white/[0.02]"
+          className="glassmorphism max-w-4xl mx-auto rounded-2xl border border-white/5 p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-around gap-4 sm:gap-6 text-center sm:text-left bg-white/[0.02]"
         >
           <div className="flex items-center gap-3">
-            <span className="text-3xl">🩺</span>
+            <span className="text-2xl sm:text-3xl">🩺</span>
             <div>
-              <h4 className="font-semibold text-secondary text-sm">Full Medical Checkups</h4>
-              <p className="text-xs text-zinc-400 font-light">Certified vets monitor all animals daily</p>
+              <h4 className="font-semibold text-secondary text-xs sm:text-sm">Full Medical Checkups</h4>
+              <p className="text-[10px] sm:text-xs text-zinc-400 font-light">Certified vets monitor all animals daily</p>
             </div>
           </div>
-          <div className="h-8 w-px bg-white/10 hidden sm:block" />
+          <div className="h-px sm:h-8 w-full sm:w-px bg-white/10" />
           <div className="flex items-center gap-3">
-            <span className="text-3xl">🧼</span>
+            <span className="text-2xl sm:text-3xl">🧼</span>
             <div>
-              <h4 className="font-semibold text-secondary text-sm">Hygienic Sacrifice</h4>
-              <p className="text-xs text-zinc-400 font-light">Islamic, government-approved slaughters</p>
+              <h4 className="font-semibold text-secondary text-xs sm:text-sm">Hygienic Sacrifice</h4>
+              <p className="text-[10px] sm:text-xs text-zinc-400 font-light">Islamic, government-approved slaughters</p>
             </div>
           </div>
-          <div className="h-8 w-px bg-white/10 hidden sm:block" />
+          <div className="h-px sm:h-8 w-full sm:w-px bg-white/10" />
           <div className="flex items-center gap-3">
-            <span className="text-3xl">📦</span>
+            <span className="text-2xl sm:text-3xl">📦</span>
             <div>
-              <h4 className="font-semibold text-secondary text-sm">Chilled Delivery</h4>
-              <p className="text-xs text-zinc-400 font-light">Vaccuum sealed in cold chain vans</p>
+              <h4 className="font-semibold text-secondary text-xs sm:text-sm">Chilled Delivery</h4>
+              <p className="text-[10px] sm:text-xs text-zinc-400 font-light">Vaccuum sealed in cold chain vans</p>
             </div>
           </div>
         </motion.div>
