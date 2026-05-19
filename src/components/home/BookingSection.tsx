@@ -144,15 +144,15 @@ export default function BookingSection() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
           
           {/* Left Column: Form Details & Guarantee */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-6">
             <span className="text-primary font-bold text-xs tracking-widest uppercase flex items-center gap-1.5">
               <HeartHandshake className="w-4 h-4 text-secondary" />
               <span>Hassle-Free Sacrifice Booking</span>
             </span>
-            <h2 className="text-4xl md:text-5xl font-amiri font-bold text-primary tracking-wide leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-amiri font-bold text-primary tracking-wide leading-tight">
               Qurbani Book Karen 
             </h2>
             <div className="w-24 h-1 bg-secondary rounded-full" />
