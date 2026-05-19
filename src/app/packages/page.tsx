@@ -107,10 +107,10 @@ export default function PackagesPage() {
         </div>
 
         {/* 1. DYNAMIC SHARE BUDGET CALCULATOR */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           {/* Left Calculator Panel (6 cols) */}
-          <div className="lg:col-span-6 glassmorphism-dark rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 flex flex-col justify-between border border-white/10 bg-white/[0.02] backdrop-blur-md">
+          <div className="lg:col-span-6 glassmorphism-dark rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl space-y-6 flex flex-col justify-between border border-white/10 bg-white/[0.02] backdrop-blur-md">
             <div className="space-y-6">
               <div className="flex items-center gap-2 mb-2 border-b border-white/5 pb-3">
                 <Calculator className="w-5 h-5 text-secondary animate-pulse" />
@@ -211,7 +211,7 @@ export default function PackagesPage() {
               key={calcAnimal + calcShares}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-[#050e09]/95 text-zinc-100 rounded-3xl p-8 border border-secondary/25 shadow-2xl relative overflow-hidden flex flex-col justify-between h-full min-h-[380px]"
+              className="bg-[#050e09]/95 text-zinc-100 rounded-3xl p-6 sm:p-8 border border-secondary/25 shadow-2xl relative overflow-hidden flex flex-col justify-between h-full min-h-[350px] sm:min-h-[380px]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 opacity-5 border-t border-r border-white rounded-tr-3xl" />
               
@@ -224,12 +224,12 @@ export default function PackagesPage() {
               </div>
 
               {/* Price Display */}
-              <div className="text-center py-6 bg-white/[0.02] border border-white/5 rounded-2xl my-6">
+              <div className="text-center py-4 sm:py-6 bg-white/[0.02] border border-white/5 rounded-2xl my-4 sm:my-6">
                 <span className="text-xs text-zinc-400 uppercase tracking-widest block">Total Estimated Cost</span>
-                <span className="text-4xl sm:text-5xl font-extrabold text-secondary font-poppins tracking-wide block mt-1 text-gold-glow">
+                <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-secondary font-poppins tracking-wide block mt-1 text-gold-glow">
                   Rs. {calculatePrice().toLocaleString()}
                 </span>
-                <span className="text-xs text-zinc-300 mt-3 block flex items-center justify-center gap-1.5">
+                <span className="text-xs text-zinc-300 mt-2 sm:mt-3 block flex items-center justify-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-secondary" />
                   <span>Estimated meat yield: {calculateMeatYield()}</span>
                 </span>
@@ -257,11 +257,11 @@ export default function PackagesPage() {
         </section>
 
         {/* 2. DETAILED FAQs SECTION */}
-        <section className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl">
+        <section className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl">
           <div className="flex items-center gap-2.5 mb-6 border-b border-white/5 pb-3">
-            <HelpCircle className="w-6 h-6 text-secondary animate-pulse" />
+            <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6 text-secondary animate-pulse" />
             <div>
-              <h2 className="text-2xl font-bold text-white font-poppins">Shariah Qurbani FAQs</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-white font-poppins">Shariah Qurbani FAQs</h2>
               <p className="text-xs text-zinc-400">Important rulings and guidelines from authentic sources.</p>
             </div>
           </div>
