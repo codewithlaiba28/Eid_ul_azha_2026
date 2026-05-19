@@ -180,7 +180,7 @@ function BookingsPageContent() {
             <Compass className="w-4 h-4 text-secondary animate-pulse" />
             <span>Qurbani Vault & Tracking</span>
           </span>
-          <h1 className="text-4xl md:text-6xl font-amiri font-bold text-secondary tracking-wide text-gold-glow">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-amiri font-bold text-secondary tracking-wide text-gold-glow">
             Qurbani Booking Tracker
           </h1>
           <div className="w-24 h-1 bg-secondary rounded-full mx-auto" />
@@ -190,14 +190,14 @@ function BookingsPageContent() {
         </div>
 
         {/* Dashboard grid layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           
           {/* LEFT PANEL: BOOKINGS LIST OR NEW REGISTRATION (4 cols) */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-4 sm:space-y-6">
             
             {/* Booking selector panel (if bookings exist) */}
             {localBookings.length > 0 && (
-              <div className="glassmorphism-dark border border-white/10 rounded-3xl p-5 shadow-2xl space-y-4 bg-white/[0.02] backdrop-blur-md text-zinc-100">
+              <div className="glassmorphism-dark border border-white/10 rounded-3xl p-4 sm:p-5 shadow-2xl space-y-4 bg-white/[0.02] backdrop-blur-md text-zinc-100">
                 <h3 className="text-xs font-bold text-white uppercase tracking-wider">Your Bookings List</h3>
                 <div className="space-y-2 max-h-48 overflow-y-auto">
                   {localBookings.map((b) => (
@@ -236,7 +236,7 @@ function BookingsPageContent() {
             )}
 
             {/* Registration mini summary */}
-            <div className="bg-[#050e09]/95 text-zinc-100 border border-secondary/25 rounded-3xl p-5 shadow-2xl space-y-3 relative overflow-hidden">
+            <div className="bg-[#050e09]/95 text-zinc-100 border border-secondary/25 rounded-3xl p-4 sm:p-5 shadow-2xl space-y-3 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-16 h-16 opacity-5 border-t border-r border-white rounded-tr-3xl" />
               <h3 className="font-bold text-xs text-secondary uppercase tracking-wider">Secured Qurbani Vault</h3>
               <p className="text-[11px] text-zinc-300 leading-relaxed font-light font-poppins">
@@ -260,15 +260,15 @@ function BookingsPageContent() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
-                  className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl space-y-8 text-zinc-100"
+                  className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl space-y-6 sm:space-y-8 text-zinc-100"
                 >
                   {/* Dashboard Header */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/5 pb-5">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 border-b border-white/5 pb-4 sm:pb-5">
                     <div>
                       <span className="text-[10px] text-secondary font-extrabold uppercase tracking-widest block">Live Status Tracking</span>
-                      <h2 className="text-2xl font-bold text-white font-poppins mt-1">Invoice ID: {currentBooking.invoiceId}</h2>
+                      <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white font-poppins mt-1">Invoice ID: {currentBooking.invoiceId}</h2>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2">
                       <span className="px-3 py-1 bg-emerald-500 text-white rounded-full text-xs font-bold shadow-md animate-pulse">
                         {currentBooking.status}
                       </span>
@@ -279,27 +279,27 @@ function BookingsPageContent() {
                   </div>
 
                   {/* Customer details banner */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-white/[0.02] border border-white/5 rounded-2xl p-4 text-xs font-poppins">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 bg-white/[0.02] border border-white/5 rounded-2xl p-3 sm:p-4 text-xs font-poppins">
                     <div>
                       <span className="text-zinc-400 uppercase block font-semibold text-[9px] tracking-wider">Booked Name:</span>
                       <span className="font-bold text-white mt-1 block">{currentBooking.name}</span>
                     </div>
-                    <div className="border-l border-white/10 pl-3">
+                    <div className="sm:border-l border-white/10 sm:pl-3">
                       <span className="text-zinc-400 uppercase block font-semibold text-[9px] tracking-wider">Contact phone:</span>
                       <span className="font-bold text-white mt-1 block">{currentBooking.phone}</span>
                     </div>
-                    <div className="border-l border-white/10 pl-3">
+                    <div className="sm:border-l border-white/10 sm:pl-3">
                       <span className="text-zinc-400 uppercase block font-semibold text-[9px] tracking-wider">Shares slot:</span>
                       <span className="font-bold text-white mt-1 block">{currentBooking.shares} Share{currentBooking.shares > 1 ? "s" : ""}</span>
                     </div>
-                    <div className="border-l border-white/10 pl-3">
+                    <div className="sm:border-l border-white/10 sm:pl-3">
                       <span className="text-zinc-400 uppercase block font-semibold text-[9px] tracking-wider">Registration:</span>
                       <span className="font-bold text-white mt-1 block">{currentBooking.city}</span>
                     </div>
                   </div>
 
                   {/* Veterinary tag card info */}
-                  <div className="border border-white/10 p-5 rounded-2xl flex flex-col sm:flex-row justify-between gap-6 shadow-md bg-white/[0.01]">
+                  <div className="border border-white/10 p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 shadow-md bg-white/[0.01]">
                     <div className="space-y-2">
                       <h4 className="font-bold text-sm text-white uppercase tracking-wider flex items-center gap-1.5">
                         <ShieldCheck className="w-4 h-4 text-secondary" />
