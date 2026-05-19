@@ -136,11 +136,11 @@ export default function WishesPage() {
         </div>
 
         {/* Studio Console Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           
           {/* Left Console: Card Design Customizer (6 cols) */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 text-zinc-100">
+            <div className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl space-y-6 text-zinc-100">
               <h3 className="text-lg font-bold text-white border-b border-white/5 pb-3 font-poppins">
                 Greeting Card Customizer
               </h3>
@@ -223,7 +223,7 @@ export default function WishesPage() {
           {/* Right Console: Live Card Canvas Preview (6 cols) */}
           <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
             <div
-              className={`w-full max-w-lg rounded-3xl p-8 border-4 border-double ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[380px] sm:h-[420px]`}
+              className={`w-full max-w-lg rounded-3xl p-6 sm:p-8 border-4 border-double ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[350px] sm:h-[380px] md:h-[420px]`}
             >
               {/* Card visual patterns */}
               <div className="absolute top-0 right-0 w-32 h-32 opacity-10 border-t-2 border-r-2 border-white rounded-tr-3xl" />
@@ -295,16 +295,16 @@ export default function WishesPage() {
         </div>
 
         {/* PREMADE WISHES LIBRARY */}
-        <section className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl text-zinc-100">
+        <section className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl text-zinc-100">
           <div className="flex items-center gap-2.5 mb-6 border-b border-white/5 pb-3">
-            <span className="text-3xl">📚</span>
+            <span className="text-2xl sm:text-3xl">📚</span>
             <div>
-              <h2 className="text-2xl font-bold text-white font-poppins">Greetings & Dua Library</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-white font-poppins">Greetings & Dua Library</h2>
               <p className="text-xs text-zinc-400">Click any card below to immediately load the greeting into your designer canvas above.</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {predefinedQuotes.map((quote, idx) => (
               <motion.div
                 key={idx}
