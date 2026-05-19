@@ -129,7 +129,7 @@ export default function WishesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
           
           {/* Left Side: Parameters Form */}
           <motion.div
@@ -137,7 +137,7 @@ export default function WishesSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl text-zinc-100"
+            className="lg:col-span-5 glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl text-zinc-100"
           >
             <h3 className="text-xl font-bold text-white mb-6 border-b border-white/5 pb-3">
               Customize Greeting
