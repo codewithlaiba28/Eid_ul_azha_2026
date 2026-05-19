@@ -87,7 +87,7 @@ export default function GallerySection() {
         </div>
 
         {/* Masonry-like Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {images.map((img, idx) => (
             <motion.div
               key={idx}
@@ -96,7 +96,7 @@ export default function GallerySection() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               whileHover={{ y: -6 }}
-              className="relative overflow-hidden rounded-2xl h-80 border border-secondary/20 shadow-lg cursor-pointer group"
+              className="relative overflow-hidden rounded-2xl h-64 sm:h-72 lg:h-80 border border-secondary/20 shadow-lg cursor-pointer group"
               onClick={() => setActiveIdx(idx)}
             >
               {/* Image component */}
