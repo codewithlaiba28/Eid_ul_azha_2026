@@ -13,7 +13,7 @@ export default function AboutSection() {
       <div className="absolute bottom-0 right-0 w-32 h-32 opacity-5 border-b-2 border-r-2 border-secondary rounded-br-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Decorative Illustration / Image Container */}
           <motion.div
@@ -26,7 +26,7 @@ export default function AboutSection() {
             <div className="islamic-border w-full max-w-md relative group">
               {/* Gold frame shimmer */}
               <div className="absolute -inset-2 bg-gradient-to-r from-secondary to-gold opacity-20 rounded-3xl blur-xl group-hover:opacity-30 transition-all duration-700" />
-              <div className="relative rounded-2xl overflow-hidden border border-secondary/25 shadow-2xl h-80 sm:h-96 w-full">
+              <div className="relative rounded-2xl overflow-hidden border border-secondary/25 shadow-2xl h-64 sm:h-80 md:h-96 w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=800"
                   alt="Beautiful Mosque at Sunset"
@@ -53,7 +53,7 @@ export default function AboutSection() {
               <span>Significance of Eid ul Adha</span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-amiri font-bold gold-gradient-text tracking-wide leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-amiri font-bold gold-gradient-text tracking-wide leading-tight">
               The Spirit of Sacrifice
             </h2>
             
