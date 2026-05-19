@@ -124,10 +124,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative inline-block"
+          className="relative inline-block px-4"
         >
           <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-secondary to-gold opacity-20 blur-3xl animate-pulse" />
-          <h1 className="font-amiri text-6xl md:text-8xl gold-gradient-text font-bold mb-5 tracking-wide leading-tight text-gold-glow">
+          <h1 className="font-amiri text-4xl sm:text-5xl md:text-7xl lg:text-8xl gold-gradient-text font-bold mb-5 tracking-wide leading-tight text-gold-glow">
             عيد الأضحى مبارك
           </h1>
         </motion.div>
@@ -136,7 +136,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-zinc-300 text-lg md:text-2xl font-light tracking-wide max-w-xl mx-auto mb-10 font-poppins"
+          className="text-zinc-300 text-base sm:text-lg md:text-xl lg:text-2xl font-light tracking-wide max-w-xl mx-auto mb-10 font-poppins px-4"
         >
           Wishing you joy, blessings & prosperity on this sacred festival.
         </motion.p>
@@ -146,7 +146,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="grid grid-cols-4 gap-3 md:gap-6 max-w-lg mx-auto w-full mb-12"
+          className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-6 max-w-lg mx-auto w-full mb-12 px-4"
         >
           {[
             { label: "Days", value: timeLeft.days },
@@ -156,14 +156,14 @@ export default function HeroSection() {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="glassmorphism-dark rounded-2xl border border-secondary/20 p-3 md:p-5 flex flex-col items-center justify-center shadow-2xl relative group overflow-hidden"
+              className="glassmorphism-dark rounded-xl sm:rounded-2xl border border-secondary/20 p-2 sm:p-3 md:p-5 flex flex-col items-center justify-center shadow-2xl relative group overflow-hidden"
             >
               {/* Subtle inner gold gradient hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="text-2xl md:text-4xl font-extrabold text-secondary font-poppins tracking-wider">
+              <span className="text-xl sm:text-2xl md:text-4xl font-extrabold text-secondary font-poppins tracking-wider">
                 {String(item.value).padStart(2, "0")}
               </span>
-              <span className="text-[9px] md:text-xs text-zinc-400 uppercase tracking-widest mt-1.5 font-medium">
+              <span className="text-[8px] sm:text-[9px] md:text-xs text-zinc-400 uppercase tracking-widest mt-1 sm:mt-1.5 font-medium">
                 {item.label}
               </span>
             </div>
@@ -178,10 +178,10 @@ export default function HeroSection() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleConfettiAndSound}
-          className="px-8 py-4 rounded-full bg-secondary hover:bg-yellow-500 text-black font-bold text-base md:text-lg shadow-[0_0_20px_rgba(229,169,59,0.3)] hover:shadow-[0_0_35px_rgba(229,169,59,0.6)] border-none transition-all duration-300 flex items-center gap-3 relative group btn-neon-gold"
+          className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-secondary hover:bg-yellow-500 text-black font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(229,169,59,0.3)] hover:shadow-[0_0_35px_rgba(229,169,59,0.6)] border-none transition-all duration-300 flex items-center gap-2 sm:gap-3 relative group btn-neon-gold"
         >
           <span className="absolute inset-0 w-full h-full rounded-full bg-white/10 transform scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
-          <Sparkles className="w-5 h-5 animate-spin-slow text-black" />
+          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-spin-slow text-black" />
           <span>Eid Mubarak!</span>
         </motion.button>
       </div>
