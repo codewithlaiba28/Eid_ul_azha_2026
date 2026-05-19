@@ -99,7 +99,7 @@ export default function DuasPage() {
             <BookOpen className="w-4 h-4 text-secondary animate-pulse" />
             <span>Sacred Knowledge & Rituals</span>
           </span>
-          <h1 className="text-4xl md:text-6xl font-amiri font-bold text-secondary tracking-wide text-gold-glow">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-amiri font-bold text-secondary tracking-wide text-gold-glow">
             Duas, Sunnahs & Prayer Method
           </h1>
           <div className="w-24 h-1 bg-secondary rounded-full mx-auto" />
@@ -109,16 +109,16 @@ export default function DuasPage() {
         </div>
 
         {/* 1. EID SLIP SUNNAHS CHECKLIST */}
-        <section className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl text-zinc-100">
+        <section className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl text-zinc-100">
           <div className="flex items-center gap-2.5 mb-6 border-b border-white/5 pb-3">
-            <span className="text-3xl">✨</span>
+            <span className="text-2xl sm:text-3xl">✨</span>
             <div>
-              <h2 className="text-2xl font-bold text-white font-poppins">6 Sunnahs of Eid-ul-Adha</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-white font-poppins">6 Sunnahs of Eid-ul-Adha</h2>
               <p className="text-xs text-zinc-400">Toggle the tasks to keep track of your Sunnah practices on Eid morning.</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {sunnahs.map((sunnah, idx) => (
               <motion.div
                 key={idx}
@@ -151,19 +151,19 @@ export default function DuasPage() {
         </section>
 
         {/* 2. EID NAMAZ STEP-BY-STEP METHOD */}
-        <section className="glassmorphism-dark text-zinc-100 border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden bg-white/[0.02] backdrop-blur-md">
+        <section className="glassmorphism-dark text-zinc-100 border border-white/10 rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl relative overflow-hidden bg-white/[0.02] backdrop-blur-md">
           {/* Subtle decor */}
           <div className="absolute top-0 right-0 w-24 h-24 opacity-5 border-t border-r border-white rounded-tr-3xl" />
           
           <div className="flex items-center gap-2.5 mb-6 border-b border-white/5 pb-3 relative z-10">
-            <span className="text-3xl">🕌</span>
+            <span className="text-2xl sm:text-3xl">🕌</span>
             <div>
-              <h2 className="text-2xl font-bold text-secondary font-poppins">How to Perform Eid Namaz</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-secondary font-poppins">How to Perform Eid Namaz</h2>
               <p className="text-xs text-zinc-400">A step-by-step procedural guide with 6 extra Takbeeraat.</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 relative z-10">
             {/* First Raka'at */}
             <div className="space-y-4 bg-white/[0.01] border border-white/5 p-5 rounded-2xl">
               <span className="px-3 py-1 bg-secondary text-black font-bold text-[10px] tracking-wider rounded-full uppercase">
@@ -230,16 +230,16 @@ export default function DuasPage() {
         </section>
 
         {/* 3. DEDICATED QURBANI DUAS (BEFORE & AFTER SLAUGHTER) */}
-        <section className="space-y-8">
+        <section className="space-y-6 sm:space-y-8">
           <div className="flex items-center gap-2.5 border-b border-white/5 pb-3">
-            <span className="text-3xl">🐑</span>
+            <span className="text-2xl sm:text-3xl">🐑</span>
             <div>
-              <h2 className="text-2xl font-bold text-white font-poppins">Qurbani Duas</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-white font-poppins">Qurbani Duas</h2>
               <p className="text-xs text-zinc-400">Famous prayers recited before and after performing the slaughter.</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {pageDuas.map((dua) => (
               <motion.div
                 key={dua.id}
@@ -265,8 +265,8 @@ export default function DuasPage() {
                   </div>
 
                   {/* Arabic block */}
-                  <div className="text-center py-4 bg-white/[0.02] border border-white/5 rounded-2xl mb-4 px-2">
-                    <span className="font-amiri text-2xl md:text-3xl text-secondary leading-loose tracking-wide block dir-rtl">
+                  <div className="text-center py-3 sm:py-4 bg-white/[0.02] border border-white/5 rounded-2xl mb-4 px-2">
+                    <span className="font-amiri text-xl sm:text-2xl md:text-3xl text-secondary leading-loose tracking-wide block dir-rtl">
                       {dua.arabic}
                     </span>
                   </div>
