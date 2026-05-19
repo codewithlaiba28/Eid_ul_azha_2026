@@ -253,7 +253,7 @@ export default function RecipesPage() {
             <Utensils className="w-4 h-4 text-secondary" />
             <span>Eid Special Kitchen Companion</span>
           </span>
-          <h1 className="text-4xl md:text-6xl font-amiri font-bold text-secondary tracking-wide text-gold-glow">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-amiri font-bold text-secondary tracking-wide text-gold-glow">
             Eid Special Culinary Book
           </h1>
           <div className="w-24 h-1 bg-secondary rounded-full mx-auto" />
@@ -285,12 +285,12 @@ export default function RecipesPage() {
         </div>
 
         {/* Main Recipe Console Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           {/* Left Column: Image, Info & Dynamic Ingredients (5 cols) */}
-          <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
-            <div className="space-y-6">
-              <div className="relative h-64 sm:h-80 w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-6 flex flex-col justify-between">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="relative h-56 sm:h-64 md:h-80 w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 <Image
                   src={activeRecipe.image}
                   alt={activeRecipe.name}
@@ -336,7 +336,7 @@ export default function RecipesPage() {
             </div>
 
             {/* Serving Size Adjuster */}
-            <div className="glassmorphism-dark border border-white/10 rounded-3xl p-5 shadow-2xl space-y-4 bg-white/[0.02] mt-6">
+            <div className="glassmorphism-dark border border-white/10 rounded-3xl p-4 sm:p-5 shadow-2xl space-y-4 bg-white/[0.02] mt-4 sm:mt-6">
               <div className="flex justify-between items-center">
                 <h3 className="font-bold text-xs text-white uppercase tracking-wider">Dynamic Ingredients Calculator</h3>
                 <div className="flex items-center gap-2 bg-white/5 px-3 py-1 rounded-xl border border-white/5">
@@ -378,7 +378,7 @@ export default function RecipesPage() {
           </div>
 
           {/* Right Column: Cooking Steps Console (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             
             <AnimatePresence mode="wait">
               {cookMode ? (
@@ -388,7 +388,7 @@ export default function RecipesPage() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="bg-[#050e09]/95 text-zinc-100 rounded-3xl p-6 sm:p-8 border border-secondary/25 shadow-2xl space-y-6 relative overflow-hidden h-full flex flex-col justify-between"
+                  className="bg-[#050e09]/95 text-zinc-100 rounded-3xl p-5 sm:p-6 md:p-8 border border-secondary/25 shadow-2xl space-y-4 sm:space-y-6 relative overflow-hidden h-full flex flex-col justify-between"
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 opacity-5 border-t border-r border-white rounded-tr-3xl" />
                   
@@ -510,7 +510,7 @@ export default function RecipesPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6"
+                  className="glassmorphism-dark border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl space-y-4 sm:space-y-6"
                 >
                   <div className="flex justify-between items-center border-b border-white/5 pb-4">
                     <div>
