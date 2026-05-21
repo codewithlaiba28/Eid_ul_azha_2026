@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Copy, Check, MessageSquare, Volume2, Sparkles } from "lucide-react";
+import { Send, Copy, Check, Volume2, Sparkles } from "lucide-react";
 import confetti from "canvas-confetti";
 
 interface GreetingTemplate {
@@ -59,13 +59,6 @@ export default function WishesSection() {
     }
   };
 
-  const handleWhatsAppShare = () => {
-    if (generatedWish) {
-      const urlEncoded = encodeURIComponent(generatedWish);
-      window.open(`https://api.whatsapp.com/send?text=${urlEncoded}`, "_blank");
-    }
-  };
-
   const handleSpeak = () => {
     if (generatedWish && typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
@@ -76,7 +69,21 @@ export default function WishesSection() {
       } else {
         utterance.lang = "en-US";
       }
-      utterance.rate = 0.9;
+      utterance.rate = 0.85;
+      utterance.pitch = 1.0;
+      utterance.volume = 1.0;
+      
+      // Try to use a better voice if available
+      const voices = window.speechSynthesis.getVoices();
+      const preferredVoice = voices.find(voice => 
+        lang === "arabic" 
+          ? voice.lang.includes("ar")
+          : voice.lang.includes("en") && voice.name.includes("Google")
+      );
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
+      
       window.speechSynthesis.speak(utterance);
     }
   };
@@ -271,32 +278,22 @@ export default function WishesSection() {
                       <span className="hidden sm:inline">Listen</span>
                     </button>
                     
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={handleCopy}
-                        className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all flex items-center gap-1.5 text-xs font-medium text-zinc-300"
-                      >
-                        {copied ? (
-                          <>
-                            <Check className="w-4 h-4 text-emerald-400" />
-                            <span className="text-emerald-400 font-semibold">Copied!</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="w-4 h-4" />
-                            <span>Copy</span>
-                          </>
-                        )}
-                      </button>
-
-                      <button
-                        onClick={handleWhatsAppShare}
-                        className="p-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 border border-transparent text-white transition-all flex items-center gap-1.5 text-xs font-semibold shadow-md"
-                      >
-                        <MessageSquare className="w-4 h-4" />
-                        <span>WhatsApp</span>
-                      </button>
-                    </div>
+                    <button
+                      onClick={handleCopy}
+                      className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all flex items-center gap-1.5 text-xs font-medium text-zinc-300"
+                    >
+                      {copied ? (
+                        <>
+                          <Check className="w-4 h-4 text-emerald-400" />
+                          <span className="text-emerald-400 font-semibold">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4" />
+                          <span>Copy</span>
+                        </>
+                      )}
+                    </button>
                   </div>
 
                 </motion.div>
