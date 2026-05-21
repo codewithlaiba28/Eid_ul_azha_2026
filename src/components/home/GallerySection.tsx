@@ -16,7 +16,7 @@ export default function GallerySection() {
       desc: "Pilgrims performing rituals in the holy city of Makkah.",
     },
     {
-      url: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800",
+      url: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800",
       title: "Festive Qurbani Livestock",
       category: "Sunnah",
       desc: "Healthy livestock cared for organically at our primary pastures.",
