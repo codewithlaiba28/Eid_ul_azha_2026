@@ -160,13 +160,7 @@ export default function PackagesSection() {
                     </ul>
                   </div>
 
-                  {/* Book Now Button */}
-                  <Link
-                    href={`/bookings?animal=${pkg.id}`}
-                    className="w-full py-3 rounded-xl bg-secondary text-black font-semibold text-xs tracking-wider uppercase transition-all shadow-[0_4px_12px_rgba(229,169,59,0.2)] block text-center btn-neon-gold"
-                  >
-                    Book Now
-                  </Link>
+
 
                 </div>
 

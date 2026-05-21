@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Moon, Star, Volume2 } from "lucide-react";
+import { Sparkles, Moon, Star } from "lucide-react";
 import confetti from "canvas-confetti";
 
 export default function HeroSection() {
@@ -44,13 +44,7 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleConfettiAndSound = () => {
-    // Soft bell sound
-    const audio = new Audio("https://assets.mixkit.co/active_storage/sfx/2019/2019-84.wav");
-    audio.volume = 0.5;
-    audio.play().catch(() => {});
-
-    // Confetti burst
+  const handleConfettiAndSound = () => {    // Confetti burst
     const end = Date.now() + 1.5 * 1000;
     const colors = ["#f5c518", "#1a6b3c", "#fff8e7", "#ffd700"];
 
@@ -142,20 +136,7 @@ export default function HeroSection() {
           ))}
         </motion.div>
 
-        {/* Glowing Button */}
-        <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleConfettiAndSound}
-          className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-secondary hover:bg-yellow-500 text-black font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(229,169,59,0.3)] hover:shadow-[0_0_35px_rgba(229,169,59,0.6)] border-none transition-all duration-300 flex items-center gap-2 sm:gap-3 relative group btn-neon-gold"
-        >
-          <span className="absolute inset-0 w-full h-full rounded-full bg-white/10 transform scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
-          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-spin-slow text-black" />
-          <span>Eid Mubarak!</span>
-        </motion.button>
+
       </div>
     </section>
   );

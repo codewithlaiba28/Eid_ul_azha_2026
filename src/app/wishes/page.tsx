@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HeartHandshake, Copy, Check, MessageSquare, Volume2, Download, RefreshCw, Sparkles } from "lucide-react";
+import { HeartHandshake, Copy, Check, MessageSquare, Download, RefreshCw, Sparkles } from "lucide-react";
 import confetti from "canvas-confetti";
 
 interface Quote {
@@ -102,19 +102,7 @@ export default function WishesPage() {
     window.open(`https://api.whatsapp.com/send?text=${textEncoded}`, "_blank");
   };
 
-  const handleSpeech = () => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(selectedQuote || "Eid Mubarak");
-      utterance.rate = 0.9;
-      if (selectedQuote.includes("الله")) {
-        utterance.lang = "ar-SA";
-      } else {
-        utterance.lang = "en-US";
-      }
-      window.speechSynthesis.speak(utterance);
-    }
-  };
+
 
   return (
     <div className="bg-transparent min-h-screen text-zinc-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -201,13 +189,6 @@ export default function WishesPage() {
               <div className="space-y-2 border-t border-white/5 pt-4">
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Custom Greeting Text</label>
-                  <button
-                    onClick={() => handleSelectQuote(predefinedQuotes[Math.floor(Math.random() * predefinedQuotes.length)].text)}
-                    className="text-[10px] text-secondary hover:text-yellow-500 font-bold flex items-center gap-1 transition-colors"
-                  >
-                    <RefreshCw className="w-3 h-3 text-secondary" />
-                    <span>Load Random</span>
-                  </button>
                 </div>
                 <textarea
                   rows={4}
@@ -261,32 +242,8 @@ export default function WishesPage() {
 
               {/* Card Controls Panel */}
               <div className="border-t border-white/10 pt-4 flex items-center justify-between z-10 w-full">
-                <button
-                  onClick={handleSpeech}
-                  className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 text-secondary transition-all"
-                  title="Speak wish aloud"
-                >
-                  <Volume2 className="w-5 h-5 text-secondary animate-pulse" />
-                </button>
-
-                <div className="flex items-center gap-2">
-                  {/* Copy */}
-                  <button
-                    onClick={handleCopy}
-                    className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 text-zinc-200 transition-all flex items-center gap-1.5 text-xs font-medium"
-                  >
-                    {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                    <span>{copied ? "Copied!" : "Copy"}</span>
-                  </button>
-
-                  {/* Share WhatsApp */}
-                  <button
-                    onClick={handleWhatsApp}
-                    className="p-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 border border-transparent text-white transition-all flex items-center gap-1.5 text-xs font-semibold shadow-md"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>WhatsApp</span>
-                  </button>
+                <div className="text-xs text-zinc-400">
+                  Eid Mubarak Card
                 </div>
               </div>
             </div>
@@ -309,8 +266,7 @@ export default function WishesPage() {
               <motion.div
                 key={idx}
                 whileHover={{ scale: 1.02, y: -4 }}
-                onClick={() => handleSelectQuote(quote.text)}
-                className="bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl p-5 shadow-lg cursor-pointer flex flex-col justify-between transition-all duration-300"
+                className="bg-white/5 border border-white/5 rounded-2xl p-5 shadow-lg flex flex-col justify-between transition-all duration-300"
               >
                 <div>
                   <div className="flex justify-between items-center border-b border-white/5 pb-2 mb-3">
@@ -329,10 +285,6 @@ export default function WishesPage() {
                   }`}>
                     {quote.text}
                   </p>
-                </div>
-                
-                <div className="text-[10px] text-secondary hover:text-yellow-500 font-bold text-right pt-3 mt-3 border-t border-white/5">
-                  Click to select →
                 </div>
               </motion.div>
             ))}

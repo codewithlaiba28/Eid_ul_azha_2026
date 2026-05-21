@@ -214,10 +214,6 @@ export default function RecipesPage() {
           if (prev <= 1) {
             setTimerRunning(false);
             if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
-            // Play alarm sound
-            const alarm = new Audio("https://assets.mixkit.co/active_storage/sfx/2869/2869-44.wav");
-            alarm.volume = 0.5;
-            alarm.play().catch(() => {});
             return 0;
           }
           return prev - 1;
@@ -265,22 +261,17 @@ export default function RecipesPage() {
         {/* Recipe Selection Tabs */}
         <div className="flex overflow-x-auto gap-3 pb-3 border-b border-white/10 scrollbar-none" style={{ scrollbarWidth: "none" }}>
           {recipes.map((recipe, idx) => (
-            <button
+            <div
               key={recipe.id}
-              onClick={() => {
-                setActiveRecipeIdx(idx);
-                setCookMode(false);
-                setActiveStep(0);
-              }}
               className={`px-5 py-3.5 rounded-full text-xs font-semibold whitespace-nowrap border transition-all duration-300 ${
                 activeRecipeIdx === idx
                   ? "bg-secondary text-black border-secondary font-bold shadow-[0_0_15px_rgba(229,169,59,0.3)]"
-                  : "bg-white/5 hover:bg-white/10 text-zinc-300 border-white/5"
+                  : "bg-white/5 text-zinc-300 border-white/5"
               }`}
             >
               <span className="mr-1.5">{recipe.id === "sheer-khurma" ? "🍬" : "🥩"}</span>
               <span>{recipe.name}</span>
-            </button>
+            </div>
           ))}
         </div>
 
@@ -401,12 +392,6 @@ export default function RecipesPage() {
                         </span>
                         <h3 className="text-lg font-bold text-white mt-1.5">{activeRecipe.name}</h3>
                       </div>
-                      <button
-                        onClick={() => setCookMode(false)}
-                        className="text-xs text-secondary hover:text-yellow-500 border border-secondary/30 rounded-xl px-3 py-1.5 hover:bg-white/5 transition-all duration-300"
-                      >
-                        Exit Cook Mode
-                      </button>
                     </div>
 
                     {/* Step status tracker */}
@@ -444,61 +429,14 @@ export default function RecipesPage() {
                         <span className="text-3xl font-mono font-bold tracking-widest text-secondary bg-zinc-950/80 border border-secondary/25 px-5 py-2.5 rounded-xl shadow-inner text-gold-glow">
                           {formatTime(secondsLeft)}
                         </span>
-
-                        {/* Controls */}
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={() => setTimerRunning(!timerRunning)}
-                            className="p-2.5 rounded-full bg-secondary hover:bg-yellow-500 text-black transition-all duration-300 shadow-md btn-neon-gold"
-                            title={timerRunning ? "Pause Timer" : "Start Timer"}
-                          >
-                            {timerRunning ? <Pause className="w-4.5 h-4.5 fill-black" /> : <Play className="w-4.5 h-4.5 fill-black" />}
-                          </button>
-                          <button
-                            onClick={startStepTimer}
-                            className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-zinc-300 border border-white/10 transition-all duration-300"
-                            title="Reset Timer"
-                          >
-                            <RotateCcw className="w-4.5 h-4.5" />
-                          </button>
-                        </div>
                       </div>
                     </div>
 
                     {/* Navigation Steps controls */}
                     <div className="flex justify-between items-center pt-4 border-t border-white/10">
-                      <button
-                        disabled={activeStep === 0}
-                        onClick={() => setActiveStep((prev) => prev - 1)}
-                        className="px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all text-xs font-semibold"
-                      >
-                        ← Previous Step
-                      </button>
-
-                      {activeStep < activeRecipe.steps.length - 1 ? (
-                        <button
-                          onClick={() => setActiveStep((prev) => prev + 1)}
-                          className="px-5 py-2.5 rounded-xl bg-secondary text-black hover:bg-yellow-500 transition-all text-xs font-bold shadow-md btn-neon-gold"
-                        >
-                          Next Step →
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => {
-                            setCookMode(false);
-                            setActiveStep(0);
-                            confetti({
-                              particleCount: 50,
-                              spread: 60,
-                              origin: { y: 0.6 }
-                            });
-                          }}
-                          className="px-5 py-2.5 rounded-xl bg-emerald-500 text-white font-bold text-xs hover:bg-emerald-600 transition-all flex items-center gap-1.5 shadow-md animate-bounce"
-                        >
-                          <CheckCircle className="w-4 h-4 text-white" />
-                          <span>Finish Cooking!</span>
-                        </button>
-                      )}
+                      <div className="text-xs text-zinc-400">
+                        Step {activeStep + 1} of {activeRecipe.steps.length}
+                      </div>
                     </div>
                   </div>
 
@@ -517,14 +455,6 @@ export default function RecipesPage() {
                       <h3 className="text-xl font-bold text-white font-poppins">Preparation Steps</h3>
                       <p className="text-xs text-zinc-400 mt-0.5">Read through the step-by-step cooking guide.</p>
                     </div>
-                    
-                    <button
-                      onClick={() => setCookMode(true)}
-                      className="px-5 py-2.5 rounded-xl bg-secondary hover:bg-yellow-500 text-black font-bold text-xs tracking-wider uppercase transition-all shadow-[0_4px_12px_rgba(229,169,59,0.2)] flex items-center gap-1.5 btn-neon-gold"
-                    >
-                      <Flame className="w-4 h-4 text-black animate-bounce" />
-                      <span>Start Cook Mode</span>
-                    </button>
                   </div>
 
                   {/* List of steps */}

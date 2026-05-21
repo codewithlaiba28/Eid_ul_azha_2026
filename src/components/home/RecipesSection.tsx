@@ -93,23 +93,7 @@ export default function RecipesSection() {
             <div className="w-24 h-1 bg-secondary rounded-full mx-auto md:mx-0 mt-1" />
           </div>
           
-          {/* Scroll Navigation Buttons */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => handleScroll("left")}
-              className="p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-secondary hover:text-black text-secondary transition-all duration-300 shadow-md"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => handleScroll("right")}
-              className="p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-secondary hover:text-black text-secondary transition-all duration-300 shadow-md"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+
         </div>
 
         {/* Netflix style horizontal scroll row */}
@@ -178,15 +162,7 @@ export default function RecipesSection() {
           ))}
         </div>
 
-        {/* View all recipes banner button */}
-        <div className="text-center mt-6">
-          <Link
-            href="/recipes"
-            className="px-6 py-3 rounded-full bg-secondary text-black hover:bg-yellow-500 font-semibold text-xs tracking-wider uppercase transition-all shadow-[0_4px_12px_rgba(229,169,59,0.2)] inline-block btn-neon-gold"
-          >
-            Explore Recipe Book (Step-by-Step)
-          </Link>
-        </div>
+
 
       </div>
     </section>

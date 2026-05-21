@@ -127,21 +127,16 @@ export default function PackagesPage() {
                       { key: "cow", label: "Cow Share" },
                       { key: "camel", label: "Camel Share" },
                     ].map((item) => (
-                      <button
+                      <div
                         key={item.key}
-                        onClick={() => {
-                          setCalcAnimal(item.key as any);
-                          setCalcShares(1);
-                          handleCalculateConfetti();
-                        }}
-                        className={`py-3 rounded-xl text-xs font-semibold border transition-all duration-300 ${
+                        className={`py-3 rounded-xl text-xs font-semibold border transition-all duration-300 text-center ${
                           calcAnimal === item.key
                             ? "bg-secondary text-black border-secondary font-bold shadow-[0_0_15px_rgba(229,169,59,0.3)]"
-                            : "bg-white/5 hover:bg-white/10 text-zinc-300 border-white/5"
+                            : "bg-white/5 text-zinc-300 border-white/5"
                         }`}
                       >
                         {item.label}
-                      </button>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -242,13 +237,6 @@ export default function PackagesPage() {
                     {animalSpecs[calcAnimal].sharesLocked ? "1 Full Goat" : `${calcShares} of 7 Shares`}
                   </span>
                 </div>
-
-                <Link
-                  href={`/bookings?animal=${calcAnimal}`}
-                  className="px-6 py-3 rounded-xl bg-secondary text-black font-bold text-xs hover:bg-yellow-500 transition-all shadow-[0_4px_12px_rgba(229,169,59,0.2)] block text-center btn-neon-gold"
-                >
-                  Proceed with Booking
-                </Link>
               </div>
 
             </motion.div>
@@ -272,17 +260,14 @@ export default function PackagesPage() {
                 key={idx}
                 className="border-b border-white/5 last:border-b-0 pb-4 last:pb-0"
               >
-                <button
-                  onClick={() => setActiveFaqIdx(activeFaqIdx === idx ? null : idx)}
-                  className="w-full flex justify-between items-center text-left py-2 font-semibold text-zinc-100 font-poppins hover:text-secondary transition-all"
-                >
+                <div className="w-full flex justify-between items-center text-left py-2 font-semibold text-zinc-100 font-poppins">
                   <span className="text-base">{faq.q}</span>
                   <ChevronDown
                     className={`w-5 h-5 text-secondary shrink-0 transition-transform duration-300 ${
                       activeFaqIdx === idx ? "rotate-180" : ""
                     }`}
                   />
-                </button>
+                </div>
 
                 <AnimatePresence initial={false}>
                   {activeFaqIdx === idx && (

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Volume2, VolumeX, ShieldAlert, Award, Star, Compass, Sparkles } from "lucide-react";
+import { BookOpen, ShieldAlert, Award, Star, Compass, Sparkles } from "lucide-react";
 import confetti from "canvas-confetti";
 
 interface DuaItem {
@@ -15,8 +15,7 @@ interface DuaItem {
 }
 
 export default function DuasPage() {
-  const [playingId, setPlayingId] = useState<string | null>(null);
-  
+
   // Interactive checklist of Sunnahs
   const [checkedSunnahs, setCheckedSunnahs] = useState<Record<number, boolean>>({
     0: false,
@@ -55,22 +54,6 @@ export default function DuasPage() {
     }
   ];
 
-  const handleSpeak = (id: string, text: string) => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      if (playingId === id) {
-        setPlayingId(null);
-        return;
-      }
-      setPlayingId(id);
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "ar-SA";
-      utterance.rate = 0.85;
-      utterance.onend = () => setPlayingId(null);
-      utterance.onerror = () => setPlayingId(null);
-      window.speechSynthesis.speak(utterance);
-    }
-  };
 
   const toggleSunnah = (idx: number) => {
     setCheckedSunnahs(prev => ({
@@ -123,8 +106,7 @@ export default function DuasPage() {
               <motion.div
                 key={idx}
                 whileHover={{ scale: 1.02 }}
-                onClick={() => toggleSunnah(idx)}
-                className={`p-5 rounded-2xl border cursor-pointer flex gap-4 items-start transition-all duration-300 ${
+                className={`p-5 rounded-2xl border flex gap-4 items-start transition-all duration-300 ${
                   checkedSunnahs[idx]
                     ? "bg-secondary/5 border-secondary shadow-sm text-zinc-100"
                     : "bg-white/5 hover:bg-white/10 border-white/5"
@@ -252,16 +234,7 @@ export default function DuasPage() {
                       <span className="text-xs text-zinc-400 font-light mt-0.5 block">{dua.when}</span>
                     </div>
 
-                    <button
-                      onClick={() => handleSpeak(dua.id, dua.speechText)}
-                      className={`p-2.5 rounded-full border transition-all ${
-                        playingId === dua.id
-                          ? "bg-secondary text-black border-secondary animate-pulse"
-                          : "bg-white/5 border-white/10 text-secondary hover:bg-white/10"
-                      }`}
-                    >
-                      {playingId === dua.id ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                    </button>
+
                   </div>
 
                   {/* Arabic block */}

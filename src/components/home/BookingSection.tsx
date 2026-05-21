@@ -249,13 +249,7 @@ export default function BookingSection() {
                     A confirmation receipt and booking tracking code has been created. Click below to view live status tracking of your animal!
                   </p>
 
-                  <button
-                    onClick={() => router.push(`/bookings?invoice=${invoiceId}`)}
-                    className="px-6 py-3 rounded-xl bg-primary hover:bg-primary-dark text-cream font-bold text-sm tracking-wide transition-all flex items-center gap-2 shadow-lg"
-                  >
-                    <span>Track Live Booking</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+
                 </motion.div>
               )}
             </AnimatePresence>
@@ -354,13 +348,7 @@ export default function BookingSection() {
                 <span>By booking, you agree to our veterinary guidelines and Shariah compliance protocols.</span>
               </div>
 
-              {/* Submit Form */}
-              <button
-                type="submit"
-                className="w-full py-4 rounded-xl bg-primary hover:bg-primary-dark text-cream font-bold text-sm tracking-widest uppercase transition-all shadow-[0_4px_12px_rgba(26,107,60,0.15)] flex items-center justify-center gap-2"
-              >
-                <span>Complete Qurbani Booking</span>
-              </button>
+
             </form>
           </motion.div>
 

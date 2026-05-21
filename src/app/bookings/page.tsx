@@ -201,10 +201,10 @@ function BookingsPageContent() {
                 <h3 className="text-xs font-bold text-white uppercase tracking-wider">Your Bookings List</h3>
                 <div className="space-y-2 max-h-48 overflow-y-auto">
                   {localBookings.map((b) => (
-                    <button
+                    <div
                       key={b.invoiceId}
                       onClick={() => handleSelectBooking(b.invoiceId)}
-                      className={`w-full flex items-center justify-between p-3.5 rounded-xl border text-left transition-all duration-300 ${
+                      className={`w-full flex items-center justify-between p-3.5 rounded-xl border text-left transition-all duration-300 cursor-pointer ${
                         activeInvoice === b.invoiceId
                           ? "bg-secondary/10 border-secondary text-secondary shadow-[0_0_15px_rgba(229,169,59,0.15)] font-bold"
                           : "bg-white/5 hover:bg-white/10 border-white/5 text-zinc-300"
@@ -218,20 +218,11 @@ function BookingsPageContent() {
                         </div>
                       </div>
                       <ChevronRight className="w-4 h-4 text-secondary animate-pulse" />
-                    </button>
+                    </div>
                   ))}
                 </div>
 
-                {/* Add new button */}
-                <button
-                  onClick={() => {
-                    setCurrentBooking(null);
-                    setActiveInvoice("");
-                  }}
-                  className="w-full py-2.5 rounded-xl border border-dashed border-white/20 text-secondary hover:bg-white/5 font-semibold text-xs transition-all flex items-center justify-center gap-1.5"
-                >
-                  + Book Another Sacrifice
-                </button>
+
               </div>
             )}
 
@@ -510,14 +501,7 @@ function BookingsPageContent() {
                       )}
                     </div>
 
-                    {/* Complete Booking submit */}
-                    <button
-                      type="submit"
-                      className="w-full py-4 rounded-xl bg-secondary text-black hover:bg-yellow-500 font-bold text-xs tracking-widest uppercase transition-all shadow-[0_4px_12px_rgba(229,169,59,0.2)] flex items-center justify-center gap-2 mt-4 btn-neon-gold"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-black" />
-                      <span>Register Qurbani Sacrifice</span>
-                    </button>
+
                   </form>
                 </motion.div>
               )}

@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BookOpen, Volume2, VolumeX, Heart, Sparkles } from "lucide-react";
+import { BookOpen, Heart, Sparkles } from "lucide-react";
 
 export default function DuasSection() {
-  const [playingId, setPlayingId] = useState<string | null>(null);
+
 
   const duas = [
     {
@@ -38,32 +38,7 @@ export default function DuasSection() {
     },
   ];
 
-  const handleSpeak = (id: string, text: string) => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      
-      if (playingId === id) {
-        setPlayingId(null);
-        return;
-      }
 
-      setPlayingId(id);
-      const utterance = new SpeechSynthesisUtterance(text);
-      
-      utterance.lang = "ar-SA";
-      utterance.rate = 0.85;
-      
-      utterance.onend = () => {
-        setPlayingId(null);
-      };
-
-      utterance.onerror = () => {
-        setPlayingId(null);
-      };
-
-      window.speechSynthesis.speak(utterance);
-    }
-  };
 
   return (
     <section id="duas" className="py-24 bg-transparent text-zinc-100 relative overflow-hidden">
@@ -111,18 +86,7 @@ export default function DuasSection() {
                     <span className="text-[10px] text-zinc-400 font-light mt-0.5 block">{dua.benefit}</span>
                   </div>
                   
-                  {/* TTS Button */}
-                  <button
-                    onClick={() => handleSpeak(dua.id, dua.recitationText)}
-                    className={`p-2.5 rounded-full border transition-all ${
-                      playingId === dua.id
-                        ? "bg-secondary text-black border-secondary animate-pulse"
-                        : "bg-white/5 border-white/10 text-secondary hover:bg-white/10"
-                    }`}
-                    title={playingId === dua.id ? "Stop Recitation" : "Listen Recitation (Arabic)"}
-                  >
-                    {playingId === dua.id ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                  </button>
+
                 </div>
 
                 {/* Arabic Text Display */}
@@ -154,15 +118,7 @@ export default function DuasSection() {
           ))}
         </div>
 
-        {/* Sunnahs grid */}
-        <div className="mt-16 text-center">
-          <Link
-            href="/duas"
-            className="px-6 py-3 rounded-full border-2 border-secondary text-secondary hover:bg-secondary hover:text-black font-bold text-sm tracking-wide transition-all shadow-[0_4px_12px_rgba(229,169,59,0.1)] inline-block btn-neon-gold"
-          >
-            Learn Eid Sunnahs & Step-by-Step Prayer Method
-          </Link>
-        </div>
+
 
       </div>
     </section>

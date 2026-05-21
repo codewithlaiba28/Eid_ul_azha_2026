@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Copy, Check, Volume2, Sparkles } from "lucide-react";
+import { Send, Copy, Check, Sparkles } from "lucide-react";
 import confetti from "canvas-confetti";
 
 interface GreetingTemplate {
@@ -59,34 +59,7 @@ export default function WishesSection() {
     }
   };
 
-  const handleSpeak = () => {
-    if (generatedWish && typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(generatedWish);
-      
-      if (lang === "arabic") {
-        utterance.lang = "ar-SA";
-      } else {
-        utterance.lang = "en-US";
-      }
-      utterance.rate = 0.85;
-      utterance.pitch = 1.0;
-      utterance.volume = 1.0;
-      
-      // Try to use a better voice if available
-      const voices = window.speechSynthesis.getVoices();
-      const preferredVoice = voices.find(voice => 
-        lang === "arabic" 
-          ? voice.lang.includes("ar")
-          : voice.lang.includes("en") && voice.name.includes("Google")
-      );
-      if (preferredVoice) {
-        utterance.voice = preferredVoice;
-      }
-      
-      window.speechSynthesis.speak(utterance);
-    }
-  };
+
 
   // Card themes configuration
   const cardThemes = {
@@ -220,14 +193,7 @@ export default function WishesSection() {
                 </div>
               </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full py-4 rounded-xl bg-secondary text-black hover:bg-yellow-500 font-bold text-xs tracking-widest uppercase transition-all shadow-[0_4px_12px_rgba(229,169,59,0.2)] flex items-center justify-center gap-2 btn-neon-gold"
-              >
-                <Send className="w-4 h-4 text-black" />
-                <span>Generate Wish Card</span>
-              </button>
+
             </form>
           </motion.div>
 
@@ -267,34 +233,7 @@ export default function WishesSection() {
                     </p>
                   </div>
 
-                  {/* Card Actions Panel */}
-                  <div className="border-t border-white/10 pt-4 flex items-center justify-between z-10">
-                    <button
-                      onClick={handleSpeak}
-                      className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all flex items-center gap-1 text-xs font-medium text-zinc-300"
-                      title="Read wish aloud"
-                    >
-                      <Volume2 className="w-4 h-4 text-secondary animate-pulse" />
-                      <span className="hidden sm:inline">Listen</span>
-                    </button>
-                    
-                    <button
-                      onClick={handleCopy}
-                      className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 transition-all flex items-center gap-1.5 text-xs font-medium text-zinc-300"
-                    >
-                      {copied ? (
-                        <>
-                          <Check className="w-4 h-4 text-emerald-400" />
-                          <span className="text-emerald-400 font-semibold">Copied!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-4 h-4" />
-                          <span>Copy</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
+
 
                 </motion.div>
               ) : (

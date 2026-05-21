@@ -144,30 +144,7 @@ export default function GallerySection() {
               onClick={() => setActiveIdx(null)}
               className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-center items-center p-4 sm:p-8"
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setActiveIdx(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-cream/5 border border-cream/15 text-cream hover:bg-secondary hover:text-dark-green transition-all"
-                aria-label="Close Lightbox"
-              >
-                <X className="w-6 h-6" />
-              </button>
 
-              {/* Navigation Arrows */}
-              <button
-                onClick={handlePrev}
-                className="absolute left-4 sm:left-8 p-3 rounded-full bg-cream/5 border border-cream/10 text-cream hover:bg-secondary hover:text-dark-green transition-all"
-                aria-label="Previous Image"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute right-4 sm:right-8 p-3 rounded-full bg-cream/5 border border-cream/10 text-cream hover:bg-secondary hover:text-dark-green transition-all"
-                aria-label="Next Image"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
 
               {/* Lightbox content */}
               <motion.div
