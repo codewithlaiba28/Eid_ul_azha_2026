@@ -82,11 +82,7 @@ export default function Footer() {
                   <span>✦</span> Home Page
                 </Link>
               </li>
-              <li>
-                <Link href="/packages" className="hover:text-secondary transition-colors font-light text-zinc-300 flex items-center gap-1.5">
-                  <span>✦</span> Qurbani Packages
-                </Link>
-              </li>
+
               <li>
                 <Link href="/wishes" className="hover:text-secondary transition-colors font-light text-zinc-300 flex items-center gap-1.5">
                   <span>✦</span> Wishes Generator
@@ -102,11 +98,7 @@ export default function Footer() {
                   <span>✦</span> Duas & Namaz
                 </Link>
               </li>
-              <li>
-                <Link href="/bookings" className="hover:text-secondary transition-colors font-light text-zinc-300 flex items-center gap-1.5">
-                  <span>✦</span> Track Qurbani
-                </Link>
-              </li>
+
             </ul>
           </div>
 
