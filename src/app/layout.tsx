@@ -3,7 +3,6 @@ import { Poppins, Amiri } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FloatingParticles from "@/components/FloatingParticles";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -38,9 +37,6 @@ export default function RootLayout({
       <body className="bg-[#030704] text-zinc-100 min-h-screen flex flex-col font-poppins selection:bg-secondary selection:text-black relative overflow-x-hidden">
         {/* Modern glowing aura layers */}
         <div className="celestial-mesh" />
-
-        {/* Floating particles background across the whole site */}
-        <FloatingParticles />
 
         {/* Premium Sticky Navigation Header */}
         <Header />

@@ -90,34 +90,6 @@ export default function HeroSection() {
 
   return (
     <section className="bg-transparent min-h-[92vh] flex flex-col justify-between items-center text-center px-4 pt-16 pb-20 relative overflow-hidden">
-      {/* Background Star Details */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="star w-1 h-1 top-24 left-[15%] animate-twinkle" style={{ animationDelay: "0.2s" }} />
-        <div className="star w-1.5 h-1.5 top-44 left-[75%] animate-twinkle" style={{ animationDelay: "1s" }} />
-        <div className="star w-0.5 h-0.5 top-[60%] left-[30%] animate-twinkle" style={{ animationDelay: "2.4s" }} />
-        <div className="star w-2 h-2 top-[32%] left-[85%] animate-twinkle" style={{ animationDelay: "0.6s" }} />
-        <div className="star w-1 h-1 top-[78%] left-[65%] animate-twinkle" style={{ animationDelay: "1.8s" }} />
-      </div>
-
-      {/* Floating Crescent Moon */}
-      <motion.div
-        className="absolute top-16 right-[10%] text-secondary z-0 filter drop-shadow-[0_0_35px_rgba(229,169,59,0.35)]"
-        animate={{
-          y: [0, -15, 0],
-          rotate: [0, 6, 0],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="relative">
-          <Moon className="w-24 h-24 fill-secondary stroke-none" />
-          <Star className="w-6 h-6 text-gold absolute -top-1 -left-3 animate-pulse" />
-        </div>
-      </motion.div>
-
       {/* Main Content Area */}
       <div className="max-w-4xl mx-auto z-10 flex-grow flex flex-col justify-center items-center mt-16 md:mt-24">
         <motion.div
