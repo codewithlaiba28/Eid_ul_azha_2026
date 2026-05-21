@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Star, Menu, X, Calendar, Utensils, HeartHandshake, BookOpen, User } from "lucide-react";
+import { Moon, Star, Menu, X, Utensils, HeartHandshake, BookOpen } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,11 +24,9 @@ export default function Header() {
 
   const navLinks = [
     { name: "Home", href: "/", icon: Moon },
-    { name: "Qurbani Packages", href: "/packages", icon: Calendar },
     { name: "Eid Wishes", href: "/wishes", icon: HeartHandshake },
     { name: "Eid Recipes", href: "/recipes", icon: Utensils },
     { name: "Duas & Sunnahs", href: "/duas", icon: BookOpen },
-    { name: "My Bookings", href: "/bookings", icon: User },
   ];
 
   return (
@@ -80,16 +78,6 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Action buttons */}
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
-            <Link
-              href="/bookings"
-              className="px-3 xl:px-6 py-2 rounded-full bg-secondary text-black font-semibold text-[10px] xl:text-xs whitespace-nowrap transition-all duration-300 btn-neon-gold shadow-[0_4px_15px_rgba(229,169,59,0.25)] animate-pulse-glow"
-            >
-              <span className="hidden xl:inline">Book Qurbani</span>
-              <span className="xl:hidden">Book</span>
-            </Link>
-          </div>
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-3">
@@ -145,13 +133,6 @@ export default function Header() {
         </nav>
 
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-4">
-          <Link
-            href="/bookings"
-            onClick={() => setIsOpen(false)}
-            className="w-full py-3.5 text-center rounded-xl bg-secondary text-black font-bold text-xs hover:bg-yellow-500 transition-all duration-300 shadow-[0_4px_12px_rgba(229,169,59,0.2)]"
-          >
-            Book Qurbani
-          </Link>
           <div className="text-center text-[10px] text-zinc-500 font-poppins mt-2">
             May Allah bless you with peace and happiness.
           </div>
