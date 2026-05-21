@@ -3,12 +3,12 @@
 import React, { Suspense } from "react";
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
-import PackagesSection from "@/components/home/PackagesSection";
+
 import RecipesSection from "@/components/home/RecipesSection";
 import GallerySection from "@/components/home/GallerySection";
 import WishesSection from "@/components/home/WishesSection";
 import DuasSection from "@/components/home/DuasSection";
-import BookingSection from "@/components/home/BookingSection";
+
 import { Loader2 } from "lucide-react";
 
 function HomePageContent() {
@@ -19,9 +19,6 @@ function HomePageContent() {
 
       {/* SECTION 2: ABOUT SPIRIT OF SACRIFICE */}
       <AboutSection />
-
-      {/* SECTION 3: QURBANI FLIP PACKAGES */}
-      <PackagesSection />
 
       {/* SECTION 4: HORIZONTAL SCROLL RECIPES */}
       <RecipesSection />
@@ -35,8 +32,6 @@ function HomePageContent() {
       {/* SECTION 7: INTERACTIVE DUAS */}
       <DuasSection />
 
-      {/* SECTION 8: DYNAMIC BOOKING & REGISTRATION FORM */}
-      <BookingSection />
     </div>
   );
 }
