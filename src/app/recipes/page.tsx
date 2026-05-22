@@ -184,6 +184,20 @@ export default function RecipesPage() {
   const [servings, setServings] = useState(4); // Default 4 servings
   const [cookMode, setCookMode] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+
+  // Read recipe id from URL parameters on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const recipeId = params.get("id");
+      if (recipeId) {
+        const foundIdx = recipes.findIndex((r) => r.id === recipeId);
+        if (foundIdx !== -1) {
+          setActiveRecipeIdx(foundIdx);
+        }
+      }
+    }
+  }, []);
   
   // Cook Mode Timer states
   const [secondsLeft, setSecondsLeft] = useState(0);
@@ -261,17 +275,22 @@ export default function RecipesPage() {
         {/* Recipe Selection Tabs */}
         <div className="flex overflow-x-auto gap-3 pb-3 border-b border-white/10 scrollbar-none" style={{ scrollbarWidth: "none" }}>
           {recipes.map((recipe, idx) => (
-            <div
+            <button
               key={recipe.id}
-              className={`px-5 py-3.5 rounded-full text-xs font-semibold whitespace-nowrap border transition-all duration-300 ${
+              onClick={() => {
+                setActiveRecipeIdx(idx);
+                setCookMode(false);
+                setActiveStep(0);
+              }}
+              className={`px-5 py-3.5 rounded-full text-xs font-semibold whitespace-nowrap border cursor-pointer transition-all duration-300 ${
                 activeRecipeIdx === idx
-                  ? "bg-secondary text-black border-secondary font-bold shadow-[0_0_15px_rgba(229,169,59,0.3)]"
-                  : "bg-white/5 text-zinc-300 border-white/5"
+                  ? "bg-secondary text-black border-secondary font-bold shadow-[0_0_15px_rgba(229,169,59,0.3)] animate-pulse-glow"
+                  : "bg-white/5 text-zinc-300 border-white/5 hover:bg-white/10 hover:text-white"
               }`}
             >
               <span className="mr-1.5">{recipe.id === "sheer-khurma" ? "🍬" : "🥩"}</span>
               <span>{recipe.name}</span>
-            </div>
+            </button>
           ))}
         </div>
 
