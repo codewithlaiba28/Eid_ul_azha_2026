@@ -31,13 +31,13 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "bg-[#030704]/80 backdrop-blur-lg border-b border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] py-2"
-          : "bg-transparent py-4"
+          ? "top-4 w-[92%] md:w-[85%] max-w-6xl bg-[#030704]/85 backdrop-blur-xl border border-secondary/25 shadow-[0_12px_40px_rgba(0,0,0,0.6),0_0_25px_rgba(229,169,59,0.15)] py-2.5 px-4 sm:px-6 lg:px-8 rounded-full"
+          : "top-0 w-full bg-transparent py-5 px-4 sm:px-6 lg:px-8 border-b border-transparent rounded-none"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group shrink-0">
