@@ -38,7 +38,7 @@ export default function Header() {
       }`}
     >
       <div className="w-full max-w-7xl mx-auto">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group shrink-0">
             <div className="relative flex items-center justify-center w-9 h-9 rounded-full bg-secondary/5 border border-secondary/20 group-hover:scale-105 transition-transform duration-300">
@@ -56,7 +56,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-3 lg:gap-1.5">
+          <nav className="hidden lg:flex lg:absolute lg:left-1/2 lg:-translate-x-1/2 items-center gap-1 xl:gap-3 lg:gap-1.5">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
