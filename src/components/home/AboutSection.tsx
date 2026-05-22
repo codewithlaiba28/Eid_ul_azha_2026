@@ -23,7 +23,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-5 flex justify-center w-full"
           >
-            <div className="islamic-border w-full max-w-md relative group">
+            <div className="relative group w-full max-w-md">
               {/* Gold frame shimmer */}
               <div className="absolute -inset-2 bg-gradient-to-r from-secondary to-gold opacity-20 rounded-3xl blur-xl group-hover:opacity-30 transition-all duration-700" />
               <div className="relative rounded-2xl overflow-hidden border border-secondary/25 shadow-2xl h-64 sm:h-80 md:h-96 w-full">
