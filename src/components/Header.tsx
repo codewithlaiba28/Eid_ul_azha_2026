@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Moon, Star, Menu, X, Utensils, HeartHandshake, BookOpen } from "lucide-react";
@@ -8,19 +8,41 @@ import { Moon, Star, Menu, X, Utensils, HeartHandshake, BookOpen } from "lucide-
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      const currentScrollY = window.scrollY;
+
+      // 1. Determine if scrolled past 20px for the floating look
+      if (currentScrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
+
+      // 2. Hide on scroll down, show on scroll up logic (suspended when mobile drawer is open)
+      if (isOpen) {
+        setIsVisible(true);
+        return;
+      }
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 120) {
+        // Scrolling down & past threshold -> Hide navbar
+        setIsVisible(false);
+      } else {
+        // Scrolling up OR near the top -> Show navbar
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isOpen]);
 
   const navLinks = [
     { name: "Home", href: "/", icon: Moon },
@@ -32,6 +54,8 @@ export default function Header() {
   return (
     <header
       className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-in-out ${
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-[120%] opacity-0"
+      } ${
         isScrolled
           ? "top-4 w-[92%] md:w-[85%] max-w-6xl bg-[#030704]/85 backdrop-blur-xl border border-secondary/25 shadow-[0_12px_40px_rgba(0,0,0,0.6),0_0_25px_rgba(229,169,59,0.15)] py-2.5 px-4 sm:px-6 lg:px-8 rounded-full"
           : "top-0 w-full bg-transparent py-5 px-4 sm:px-6 lg:px-8 border-b border-transparent rounded-none"
