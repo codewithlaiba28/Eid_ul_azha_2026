@@ -106,7 +106,8 @@ export default function DuasPage() {
               <motion.div
                 key={idx}
                 whileHover={{ scale: 1.02 }}
-                className={`p-5 rounded-2xl border flex gap-4 items-start transition-all duration-300 ${
+                onClick={() => toggleSunnah(idx)}
+                className={`p-5 rounded-2xl border flex gap-4 items-start transition-all duration-300 cursor-pointer select-none ${
                   checkedSunnahs[idx]
                     ? "bg-secondary/5 border-secondary shadow-sm text-zinc-100"
                     : "bg-white/5 hover:bg-white/10 border-white/5"
