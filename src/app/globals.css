@@ -20,6 +20,7 @@
   --animate-shimmer: shimmer 2.5s infinite linear;
   --animate-spin-slow: spin 25s linear infinite;
   --animate-twinkle: twinkle 3s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
   
   @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -36,6 +37,10 @@
   @keyframes twinkle {
     0%, 100% { opacity: 0.25; transform: scale(0.85); }
     50% { opacity: 1; transform: scale(1.15); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.2; }
   }
 }
 
