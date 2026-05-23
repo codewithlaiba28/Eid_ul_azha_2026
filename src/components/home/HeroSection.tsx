@@ -92,7 +92,7 @@ export default function HeroSection() {
           transition={{ duration: 1 }}
           className="relative inline-block px-4"
         >
-          <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-secondary to-gold opacity-20 blur-3xl animate-pulse" />
+          <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-secondary to-gold blur-3xl animate-pulse-soft" />
           <h1 className="font-amiri text-4xl sm:text-5xl md:text-7xl lg:text-8xl gold-gradient-text font-bold mb-5 tracking-wide leading-tight text-gold-glow">
             عيد الأضحى مبارك
           </h1>
