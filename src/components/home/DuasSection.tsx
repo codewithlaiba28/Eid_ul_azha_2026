@@ -42,10 +42,7 @@ export default function DuasSection() {
 
   return (
     <section id="duas" className="py-24 bg-transparent text-zinc-100 relative overflow-hidden">
-      {/* Decorative moon background */}
-      <div className="absolute top-10 left-[5%] text-white/5 text-[15rem] pointer-events-none select-none font-serif">
-        ☪
-      </div>
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -73,7 +70,7 @@ export default function DuasSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="glassmorphism-dark rounded-3xl p-5 sm:p-6 md:p-8 border border-white/10 relative flex flex-col justify-between overflow-hidden group shadow-xl hover:shadow-[0_0_25px_rgba(229,169,59,0.25)] duration-500 text-zinc-100 bg-white/[0.02]"
+              className="glassmorphism-dark rounded-3xl p-4 sm:p-5 md:p-6 border border-white/10 relative flex flex-col justify-between overflow-hidden group shadow-xl hover:shadow-[0_0_25px_rgba(229,169,59,0.25)] duration-500 text-zinc-100 bg-white/[0.02]"
             >
               {/* Gold border pulse effect */}
               <div className="absolute -inset-[1px] bg-gradient-to-r from-secondary/0 via-secondary/40 to-gold/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer pointer-events-none" />
@@ -82,7 +79,7 @@ export default function DuasSection() {
                 {/* Card Title Header */}
                 <div className="flex justify-between items-start border-b border-white/5 pb-4 mb-5">
                   <div>
-                    <h3 className="text-lg font-bold text-secondary font-poppins">{dua.title}</h3>
+                    <h3 className="text-base font-bold text-secondary font-poppins">{dua.title}</h3>
                     <span className="text-[10px] text-zinc-400 font-light mt-0.5 block">{dua.benefit}</span>
                   </div>
                   
@@ -90,8 +87,8 @@ export default function DuasSection() {
                 </div>
 
                 {/* Arabic Text Display */}
-                <div className="text-center py-3 sm:py-4 bg-white/[0.02] rounded-2xl border border-white/5 mb-5 px-2 sm:px-3">
-                  <span className="font-amiri text-xl sm:text-2xl md:text-3xl text-secondary leading-loose tracking-wide block dir-rtl">
+                <div className="text-center py-2 sm:py-3 bg-white/[0.02] rounded-2xl border border-white/5 mb-3 px-2 sm:px-3">
+                  <span className="font-amiri text-lg sm:text-xl md:text-2xl text-secondary leading-relaxed tracking-wide block dir-rtl">
                     {dua.arabic}
                   </span>
                 </div>
@@ -101,7 +98,7 @@ export default function DuasSection() {
                   {/* English Translation */}
                   <div className="space-y-1">
                     <span className="text-[10px] text-secondary/80 font-bold uppercase tracking-wider block font-poppins">English Translation:</span>
-                    <p className="text-sm text-zinc-300 leading-relaxed font-light font-poppins">
+                    <p className="text-xs text-zinc-300 leading-normal font-light font-poppins">
                       {dua.english}
                     </p>
                   </div>
@@ -109,8 +106,8 @@ export default function DuasSection() {
               </div>
 
               {/* Decorative ornament footer */}
-              <div className="border-t border-white/5 pt-4 mt-6 flex justify-between items-center text-xs text-zinc-400">
-                <span className="font-amiri text-sm text-secondary font-bold">{dua.subtitle}</span>
+              <div className="border-t border-white/5 pt-3 mt-4 flex justify-between items-center text-[10px] text-zinc-400">
+                <span className="font-amiri text-xs text-secondary font-bold">{dua.subtitle}</span>
                 <span className="flex items-center gap-1"><Heart className="w-3 h-3 text-red-500" /> Blessings</span>
               </div>
 
