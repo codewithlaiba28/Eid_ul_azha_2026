@@ -15,7 +15,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 mb-12">
           {/* Brand/Logo Section */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 group">
@@ -120,29 +120,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Newsletter Signup */}
-          <div className="space-y-4">
-            <h3 className="text-secondary font-semibold text-lg border-b border-white/10 pb-2">Join Newsletter</h3>
-            <p className="text-xs text-zinc-400 leading-relaxed font-light">
-              Subscribe to get updates on Qurbani packages, Eid recipes, prayer timings, and charity reports.
-            </p>
-            <form className="flex flex-col gap-2 mt-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-secondary focus:bg-white/10 transition-all placeholder:text-zinc-500"
-              />
-              <button
-                type="submit"
-                className="py-2.5 rounded-lg bg-secondary text-black font-bold text-xs uppercase tracking-wider hover:bg-yellow-500 transition-all shadow-[0_4px_10px_rgba(229,169,59,0.15)] btn-neon-gold"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
-
         {/* Decorative Quote */}
         <div className="border-t border-white/10 pt-8 mt-8 text-center space-y-4">
           <div className="font-amiri text-2xl text-secondary font-semibold max-w-2xl mx-auto italic">
