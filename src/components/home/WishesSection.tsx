@@ -252,6 +252,7 @@ export default function WishesSection() {
           <div className="lg:col-span-7 flex flex-col justify-center items-center h-full min-h-[380px]">
             <AnimatePresence mode="wait">
               {generatedWish ? (
+                <div className="w-full max-w-lg rounded-3xl overflow-hidden">
                 <motion.div
                   key={generatedWish}
                   initial={{ opacity: 0, scale: 0.9, y: 15 }}
@@ -259,7 +260,7 @@ export default function WishesSection() {
                   exit={{ opacity: 0, scale: 0.9, y: -15 }}
                   transition={{ duration: 0.5 }}
                   ref={cardRef}
-                  className={`w-full max-w-lg rounded-3xl p-8 border-2 ${cardThemes[theme].bg} ${cardThemes[theme].text} ${cardThemes[theme].border} ${cardThemes[theme].glow} relative overflow-hidden flex flex-col justify-between h-[360px] sm:h-[400px]`}
+                  className={`w-full p-8 border-2 ${cardThemes[theme].bg} ${cardThemes[theme].text} ${cardThemes[theme].border} ${cardThemes[theme].glow} relative overflow-hidden flex flex-col justify-between h-[360px] sm:h-[400px]`}
                 >
                   {/* Decorative card graphics */}
                   <div className="absolute top-0 right-0 w-32 h-32 opacity-10 border-t-2 border-r-2 border-white rounded-tr-3xl" />
@@ -302,6 +303,7 @@ export default function WishesSection() {
                   </div>
 
                 </motion.div>
+                </div>
               ) : (
                 <motion.div
                   key="placeholder"

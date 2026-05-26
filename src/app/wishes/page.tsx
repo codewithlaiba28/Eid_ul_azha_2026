@@ -299,10 +299,10 @@ export default function WishesPage() {
 
           {/* Right Console: Live Card Canvas Preview (6 cols) */}
           <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
-            <div className="w-full max-w-lg flex flex-col gap-4">
+            <div className="w-full max-w-lg flex flex-col gap-4 rounded-3xl overflow-hidden">
               <div
                 ref={cardRef}
-                className={`w-full rounded-3xl p-6 sm:p-8 border-2 ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[350px] sm:h-[380px] md:h-[420px]`}
+                className={`w-full p-6 sm:p-8 border-2 ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[350px] sm:h-[380px] md:h-[420px]`}
               >
                 {/* Card visual patterns */}
                 <div className="absolute top-0 right-0 w-32 h-32 opacity-10 border-t-2 border-r-2 border-white rounded-tr-3xl" />
