@@ -241,9 +241,38 @@ export default function WishesPage() {
               </div>
 
               {/* Card Controls Panel */}
-              <div className="border-t border-white/10 pt-4 flex items-center justify-between z-10 w-full">
+              <div className="border-t border-white/10 pt-4 flex items-center justify-between z-10 w-full gap-2">
                 <div className="text-xs text-zinc-400">
                   Eid Mubarak Card
+                </div>
+                <div className="flex gap-2">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handleCopy}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary border border-secondary/30 text-xs font-semibold transition-all"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="w-3.5 h-3.5" />
+                        <span>Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handleWhatsApp}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-500/10 hover:bg-green-500/20 text-green-400 border border-green-500/30 text-xs font-semibold transition-all"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5" />
+                    <span>Share</span>
+                  </motion.button>
                 </div>
               </div>
             </div>
