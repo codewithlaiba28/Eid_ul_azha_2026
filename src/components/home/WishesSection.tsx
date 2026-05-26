@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Copy, Check, Sparkles } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -16,6 +16,7 @@ export default function WishesSection() {
   const [theme, setTheme] = useState<"emerald" | "gold" | "night">("emerald");
   const [generatedWish, setGeneratedWish] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const cardRef = useRef<HTMLDivElement | null>(null);
 
   const templates: GreetingTemplate = {
     english: [
@@ -51,11 +52,43 @@ export default function WishesSection() {
     });
   };
 
-  const handleCopy = () => {
-    if (generatedWish) {
-      navigator.clipboard.writeText(generatedWish);
+  const handleCopy = async () => {
+    if (!generatedWish) return;
+
+    // Try to capture the rendered card as an image and copy to clipboard.
+    // Fallback: copy the plain text if image-copying fails or isn't supported.
+    try {
+      if (cardRef.current && navigator.clipboard && (navigator.clipboard as any).write) {
+        const { toBlob } = await import('html-to-image');
+
+        const blob = await toBlob(cardRef.current, {
+          cacheBust: true,
+        });
+
+        if (blob) {
+          const clipboardItem = new (window as any).ClipboardItem({ 'image/png': blob });
+          await navigator.clipboard.write([clipboardItem]);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+          return;
+        } else {
+          throw new Error('Failed to generate image blob');
+        }
+      }
+    } catch (err) {
+      // If anything fails (module not installed, permission, or browser), fall back below
+      // eslint-disable-next-line no-console
+      console.error('Image copy failed, falling back to text copy:', err);
+    }
+
+    // Fallback to plain text copy
+    try {
+      await navigator.clipboard.writeText(generatedWish);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error('Text copy failed:', err);
     }
   };
 
@@ -225,6 +258,7 @@ export default function WishesSection() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: -15 }}
                   transition={{ duration: 0.5 }}
+                  ref={cardRef}
                   className={`w-full max-w-lg rounded-3xl p-8 border-4 border-double ${cardThemes[theme].bg} ${cardThemes[theme].text} ${cardThemes[theme].border} ${cardThemes[theme].glow} relative overflow-hidden flex flex-col justify-between h-[360px] sm:h-[400px]`}
                 >
                   {/* Decorative card graphics */}
