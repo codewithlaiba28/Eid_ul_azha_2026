@@ -299,46 +299,49 @@ export default function WishesPage() {
 
           {/* Right Console: Live Card Canvas Preview (6 cols) */}
           <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
-            <div
-              ref={cardRef}
-              className={`w-full max-w-lg rounded-3xl p-6 sm:p-8 border-4 border-double ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[350px] sm:h-[380px] md:h-[420px]`}
-            >
-              {/* Card visual patterns */}
-              <div className="absolute top-0 right-0 w-32 h-32 opacity-10 border-t-2 border-r-2 border-white rounded-tr-3xl" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 opacity-10 border-b-2 border-l-2 border-white rounded-bl-3xl" />
-              
-              {/* Crescent decoration */}
-              <div className="flex justify-center mb-2">
-                <span className="text-4xl animate-float">🌙</span>
-              </div>
-
-              {/* Message content */}
-              <div className="flex-grow flex flex-col justify-center items-center py-4 px-2 overflow-y-auto w-full">
-                {recipient.trim() && (
-                  <span className="text-xs font-semibold uppercase tracking-wider block mb-2 opacity-80 self-start">
-                    To my dear {recipient.trim()},
-                  </span>
-                )}
+            <div className="w-full max-w-lg flex flex-col gap-4">
+              <div
+                ref={cardRef}
+                className={`w-full rounded-3xl p-6 sm:p-8 border-4 border-double ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[350px] sm:h-[380px] md:h-[420px]`}
+              >
+                {/* Card visual patterns */}
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-10 border-t-2 border-r-2 border-white rounded-tr-3xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 opacity-10 border-b-2 border-l-2 border-white rounded-bl-3xl" />
                 
-                <p
-                  className={`text-center font-light leading-relaxed ${
-                    cardFont === "amiri"
-                      ? "font-amiri text-2xl leading-normal tracking-wide"
-                      : "font-poppins text-sm sm:text-base"
-                  }`}
-                >
-                  {selectedQuote || "Wishing you a very blessed and happy Eid ul Adha! May all your sacrifices be accepted by Allah. Eid Mubarak!"}
-                </p>
+                {/* Crescent decoration */}
+                <div className="flex flex-col items-center justify-center mb-2">
+                  <span className="text-4xl animate-float">🌙</span>
+                  <span className="text-sm font-semibold tracking-widest text-secondary mt-2 uppercase">Eid Mubarak</span>
+                </div>
 
-                {sender.trim() && (
-                  <span className="text-xs font-semibold block mt-4 opacity-80 self-end">
-                    With love, — {sender.trim()}
-                  </span>
-                )}
+                {/* Message content */}
+                <div className="flex-grow flex flex-col justify-center items-center py-4 px-2 overflow-hidden w-full">
+                  {recipient.trim() && (
+                    <span className="text-xs font-semibold uppercase tracking-wider block mb-2 opacity-80 self-start">
+                      To my dear {recipient.trim()},
+                    </span>
+                  )}
+                  
+                  <p
+                    className={`text-center font-light leading-relaxed ${
+                      cardFont === "amiri"
+                        ? "font-amiri text-2xl leading-normal tracking-wide"
+                        : "font-poppins text-sm sm:text-base"
+                    }`}
+                  >
+                    {selectedQuote || "Wishing you a very blessed and happy Eid ul Adha! May all your sacrifices be accepted by Allah. Eid Mubarak!"}
+                  </p>
+
+                  {sender.trim() && (
+                    <span className="text-xs font-semibold block mt-4 opacity-80 self-end">
+                      With love, — {sender.trim()}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {/* Card Controls Panel */}
-              <div className="border-t border-white/10 pt-4 flex items-center justify-between z-10 w-full gap-2">
+              <div className="flex items-center justify-between w-full px-2">
                 <div className="text-xs text-zinc-400">
                   Eid Mubarak Card
                 </div>

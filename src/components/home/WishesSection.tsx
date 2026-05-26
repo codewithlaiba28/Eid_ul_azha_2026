@@ -268,8 +268,9 @@ export default function WishesSection() {
                   <div className="absolute bottom-4 right-4 text-xs font-serif opacity-30 select-none">Eid Mubarak</div>
 
                   {/* Card Logo / crescent */}
-                  <div className="flex justify-center mb-4">
+                  <div className="flex flex-col items-center justify-center mb-4">
                     <span className="text-5xl animate-float">🌙</span>
+                    <span className="text-sm font-semibold tracking-widest text-secondary mt-2 uppercase">Eid Mubarak</span>
                   </div>
 
                   <div className="text-center mb-4">
