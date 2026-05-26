@@ -259,7 +259,7 @@ export default function WishesSection() {
                   exit={{ opacity: 0, scale: 0.9, y: -15 }}
                   transition={{ duration: 0.5 }}
                   ref={cardRef}
-                  className={`w-full max-w-lg rounded-3xl p-8 border-4 border-double ${cardThemes[theme].bg} ${cardThemes[theme].text} ${cardThemes[theme].border} ${cardThemes[theme].glow} relative overflow-hidden flex flex-col justify-between h-[360px] sm:h-[400px]`}
+                  className={`w-full max-w-lg rounded-3xl p-8 border-2 ${cardThemes[theme].bg} ${cardThemes[theme].text} ${cardThemes[theme].border} ${cardThemes[theme].glow} relative overflow-hidden flex flex-col justify-between h-[360px] sm:h-[400px]`}
                 >
                   {/* Decorative card graphics */}
                   <div className="absolute top-0 right-0 w-32 h-32 opacity-10 border-t-2 border-r-2 border-white rounded-tr-3xl" />
@@ -270,7 +270,7 @@ export default function WishesSection() {
                   {/* Card Logo / crescent */}
                   <div className="flex flex-col items-center justify-center mb-4">
                     <span className="text-5xl animate-float">🌙</span>
-                    <span className="text-sm font-semibold tracking-widest text-secondary mt-2 uppercase">Eid Mubarak</span>
+                    <span className="text-sm font-semibold tracking-widest text-secondary mt-2 uppercase whitespace-nowrap">Eid Mubarak</span>
                   </div>
 
                   <div className="text-center mb-4">

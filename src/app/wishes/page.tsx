@@ -302,7 +302,7 @@ export default function WishesPage() {
             <div className="w-full max-w-lg flex flex-col gap-4">
               <div
                 ref={cardRef}
-                className={`w-full rounded-3xl p-6 sm:p-8 border-4 border-double ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[350px] sm:h-[380px] md:h-[420px]`}
+                className={`w-full rounded-3xl p-6 sm:p-8 border-2 ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[350px] sm:h-[380px] md:h-[420px]`}
               >
                 {/* Card visual patterns */}
                 <div className="absolute top-0 right-0 w-32 h-32 opacity-10 border-t-2 border-r-2 border-white rounded-tr-3xl" />
@@ -311,7 +311,7 @@ export default function WishesPage() {
                 {/* Crescent decoration */}
                 <div className="flex flex-col items-center justify-center mb-2">
                   <span className="text-4xl animate-float">🌙</span>
-                  <span className="text-sm font-semibold tracking-widest text-secondary mt-2 uppercase">Eid Mubarak</span>
+                  <span className="text-sm font-semibold tracking-widest text-secondary mt-2 uppercase whitespace-nowrap">Eid Mubarak</span>
                 </div>
 
                 {/* Message content */}
