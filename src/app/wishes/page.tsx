@@ -4,8 +4,7 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HeartHandshake, Copy, Check, MessageSquare, Download, RefreshCw, Sparkles } from "lucide-react";
 import confetti from "canvas-confetti";
-import html2canvas from "html2canvas";
-
+import { toBlob } from "html-to-image";
 interface Quote {
   text: string;
   category: string;
@@ -97,39 +96,36 @@ export default function WishesPage() {
     if (!cardRef.current) return;
     
     try {
-      // Convert card element to canvas
-      const canvas = await html2canvas(cardRef.current, {
-        backgroundColor: null,
-        scale: 2,
-        useCORS: true,
+      // Convert card element to canvas blob
+      const blob = await toBlob(cardRef.current, {
+        cacheBust: true,
       });
 
-      // Convert canvas to blob
-      canvas.toBlob(async (blob) => {
-        if (blob) {
-          try {
-            // Copy image to clipboard
-            await navigator.clipboard.write([
-              new ClipboardItem({
-                "image/png": blob,
-              }),
-            ]);
-            setCopied(true);
-            confetti({
-              particleCount: 30,
-              spread: 40,
-              colors: ["#e5a93b", "#ffffff"],
-            });
-            setTimeout(() => setCopied(false), 2000);
-          } catch (err) {
-            console.error("Failed to copy image:", err);
-            // Fallback to text copy
-            navigator.clipboard.writeText(getCombinedMessage());
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-          }
+      if (blob) {
+        try {
+          // Copy image to clipboard
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              "image/png": blob,
+            }),
+          ]);
+          setCopied(true);
+          confetti({
+            particleCount: 30,
+            spread: 40,
+            colors: ["#e5a93b", "#ffffff"],
+          });
+          setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+          console.error("Failed to copy image:", err);
+          // Fallback to text copy
+          navigator.clipboard.writeText(getCombinedMessage());
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
         }
-      });
+      } else {
+        throw new Error("Failed to generate image blob");
+      }
     } catch (err) {
       console.error("Failed to capture card:", err);
       // Fallback to text copy
