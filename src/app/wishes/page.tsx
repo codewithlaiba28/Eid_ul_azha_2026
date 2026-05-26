@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HeartHandshake, Copy, Check, MessageSquare, Download, RefreshCw, Sparkles } from "lucide-react";
 import confetti from "canvas-confetti";
+import html2canvas from "html2canvas";
 
 interface Quote {
   text: string;
@@ -12,6 +13,7 @@ interface Quote {
 }
 
 export default function WishesPage() {
+  const cardRef = useRef<HTMLDivElement>(null);
   const [recipient, setRecipient] = useState("");
   const [sender, setSender] = useState("");
   const [selectedQuote, setSelectedQuote] = useState("");
@@ -91,10 +93,50 @@ export default function WishesPage() {
     return msg;
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(getCombinedMessage());
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    if (!cardRef.current) return;
+    
+    try {
+      // Convert card element to canvas
+      const canvas = await html2canvas(cardRef.current, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true,
+      });
+
+      // Convert canvas to blob
+      canvas.toBlob(async (blob) => {
+        if (blob) {
+          try {
+            // Copy image to clipboard
+            await navigator.clipboard.write([
+              new ClipboardItem({
+                "image/png": blob,
+              }),
+            ]);
+            setCopied(true);
+            confetti({
+              particleCount: 30,
+              spread: 40,
+              colors: ["#e5a93b", "#ffffff"],
+            });
+            setTimeout(() => setCopied(false), 2000);
+          } catch (err) {
+            console.error("Failed to copy image:", err);
+            // Fallback to text copy
+            navigator.clipboard.writeText(getCombinedMessage());
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+          }
+        }
+      });
+    } catch (err) {
+      console.error("Failed to capture card:", err);
+      // Fallback to text copy
+      navigator.clipboard.writeText(getCombinedMessage());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   const handleWhatsApp = () => {
@@ -262,6 +304,7 @@ export default function WishesPage() {
           {/* Right Console: Live Card Canvas Preview (6 cols) */}
           <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
             <div
+              ref={cardRef}
               className={`w-full max-w-lg rounded-3xl p-6 sm:p-8 border-4 border-double ${cardThemes[cardTheme].bg} ${cardThemes[cardTheme].text} ${cardThemes[cardTheme].border} ${cardThemes[cardTheme].glow} relative overflow-hidden flex flex-col justify-between h-[350px] sm:h-[380px] md:h-[420px]`}
             >
               {/* Card visual patterns */}
