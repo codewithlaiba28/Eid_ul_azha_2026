@@ -193,7 +193,25 @@ export default function WishesSection() {
                 </div>
               </div>
 
-
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-3">
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-secondary px-5 py-3 text-sm font-semibold text-black transition-all duration-300 hover:shadow-lg hover:brightness-110"
+                >
+                  <Send className="w-4 h-4" />
+                  Generate Card
+                </button>
+                {generatedWish && (
+                  <button
+                    type="button"
+                    onClick={handleCopy}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-zinc-100 transition-all duration-300 hover:bg-white/10"
+                  >
+                    {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+                    {copied ? "Copied!" : "Copy Card"}
+                  </button>
+                )}
+              </div>
             </form>
           </motion.div>
 
@@ -216,12 +234,23 @@ export default function WishesSection() {
                   <div className="absolute bottom-4 right-4 text-xs font-serif opacity-30 select-none">Eid Mubarak</div>
 
                   {/* Card Logo / crescent */}
-                  <div className="flex justify-center mb-2">
-                    <span className="text-4xl animate-float">🌙</span>
+                  <div className="flex justify-center mb-4">
+                    <span className="text-5xl animate-float">🌙</span>
                   </div>
 
-                  {/* Card Message Body */}
-                  <div className="flex-grow flex items-center justify-center px-2 py-4">
+                  <div className="text-center mb-4">
+                    <p className="text-xs uppercase tracking-[0.35em] text-zinc-400">Personalized Eid Card</p>
+                    <h3 className="text-xl font-semibold text-white font-poppins mt-2">
+                      {lang === "arabic" ? "عيد أضحى مبارك" : "Eid ul Adha Mubarak"}
+                    </h3>
+                  </div>
+
+                  <div className="flex-grow flex flex-col justify-center px-3 py-4">
+                    {name.trim() ? (
+                      <p className="text-center text-sm text-zinc-300 uppercase tracking-[0.2em] mb-3">
+                        {lang === "arabic" ? `إلى ${name.trim()}` : `To ${name.trim()}`}
+                      </p>
+                    ) : null}
                     <p
                       className={`text-center font-light leading-relaxed text-base sm:text-lg ${
                         lang === "arabic"
@@ -233,7 +262,9 @@ export default function WishesSection() {
                     </p>
                   </div>
 
-
+                  <div className="mt-4 text-center text-xs text-zinc-400 uppercase tracking-[0.25em]">
+                    {lang === "arabic" ? "مع أفضل التمنيات" : "With warm wishes"}
+                  </div>
 
                 </motion.div>
               ) : (
