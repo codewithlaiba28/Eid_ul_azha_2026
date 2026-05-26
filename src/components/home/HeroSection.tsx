@@ -13,17 +13,18 @@ export default function HeroSection() {
     seconds: 0,
   });
 
-  // Target Date: May 26, 2026 at Maghrib (approx 18:45) Arabian Standard Time (UTC+3)
+  const [isEidPassed, setIsEidPassed] = useState(false);
+
+  // Target Date: May 26, 2026 at Maghrib (approx 18:45) Pakistan Standard Time (UTC+5)
   // In the Islamic calendar, the day begins at sunset the evening before.
   useEffect(() => {
-    let targetYear = 2026;
-    let targetDate = new Date(`May 26, ${targetYear} 18:45:00 GMT+0300`).getTime();
-    
-    // If Eid has already passed, push to next year (approximate for 2027)
-    const now = new Date().getTime();
-    if (targetDate < now) {
-      targetYear = new Date().getFullYear() + 1;
-      targetDate = new Date(`May 15, ${targetYear} 18:45:00 GMT+0300`).getTime();
+    const targetYear = 2026;
+    const targetDate = new Date(`May 26, ${targetYear} 18:45:00 GMT+0500`).getTime();
+
+    // Check on initial load
+    if (targetDate <= new Date().getTime()) {
+      setIsEidPassed(true);
+      return;
     }
 
     const interval = setInterval(() => {
@@ -33,6 +34,7 @@ export default function HeroSection() {
       if (difference <= 0) {
         clearInterval(interval);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setIsEidPassed(true);
       } else {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -109,33 +111,35 @@ export default function HeroSection() {
         </motion.p>
 
         {/* Countdown Timer */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-6 max-w-lg mx-auto w-full mb-12 px-4"
-        >
-          {[
-            { label: "Days", value: timeLeft.days },
-            { label: "Hours", value: timeLeft.hours },
-            { label: "Minutes", value: timeLeft.minutes },
-            { label: "Seconds", value: timeLeft.seconds },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="glassmorphism-dark rounded-xl sm:rounded-2xl border border-secondary/20 p-2 sm:p-3 md:p-5 flex flex-col items-center justify-center shadow-2xl relative group overflow-hidden"
-            >
-              {/* Subtle inner gold gradient hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="text-xl sm:text-2xl md:text-4xl font-extrabold text-secondary font-poppins tracking-wider">
-                {String(item.value).padStart(2, "0")}
-              </span>
-              <span className="text-[8px] sm:text-[9px] md:text-xs text-zinc-400 uppercase tracking-widest mt-1 sm:mt-1.5 font-medium">
-                {item.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
+        {!isEidPassed && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+            className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-6 max-w-lg mx-auto w-full mb-12 px-4"
+          >
+            {[
+              { label: "Days", value: timeLeft.days },
+              { label: "Hours", value: timeLeft.hours },
+              { label: "Minutes", value: timeLeft.minutes },
+              { label: "Seconds", value: timeLeft.seconds },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="glassmorphism-dark rounded-xl sm:rounded-2xl border border-secondary/20 p-2 sm:p-3 md:p-5 flex flex-col items-center justify-center shadow-2xl relative group overflow-hidden"
+              >
+                {/* Subtle inner gold gradient hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="text-xl sm:text-2xl md:text-4xl font-extrabold text-secondary font-poppins tracking-wider">
+                  {String(item.value).padStart(2, "0")}
+                </span>
+                <span className="text-[8px] sm:text-[9px] md:text-xs text-zinc-400 uppercase tracking-widest mt-1 sm:mt-1.5 font-medium">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+        )}
 
 
       </div>
