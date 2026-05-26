@@ -158,30 +158,88 @@ export default function WishesPage() {
               </div>
 
               {/* Design Controls */}
-              <div className="grid grid-cols-2 gap-4 border-t border-white/5 pt-4">
-                <div className="space-y-2">
+              <div className="grid grid-cols-1 gap-4 border-t border-white/5 pt-4">
+                <div className="space-y-2 col-span-2 sm:col-span-1">
                   <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest block">Color Theme</label>
-                  <select
-                    value={cardTheme}
-                    onChange={(e) => setCardTheme(e.target.value as any)}
-                    className="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-[#060c08] text-zinc-100 focus:outline-none focus:border-secondary text-sm font-poppins"
-                  >
-                    <option value="emerald" className="bg-zinc-900 text-zinc-100">Emerald Gold</option>
-                    <option value="gold" className="bg-zinc-900 text-zinc-100">Royal Gold</option>
-                    <option value="night" className="bg-zinc-900 text-zinc-100">Starry Night</option>
-                    <option value="crimson" className="bg-zinc-900 text-zinc-100">Crimson Amber</option>
-                  </select>
+                  <div className="grid grid-cols-2 gap-2 w-full">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setCardTheme("emerald")}
+                      className={`px-3 py-2.5 rounded-xl border text-xs font-semibold transition-all ${
+                        cardTheme === "emerald"
+                          ? "bg-secondary/20 border-secondary text-secondary"
+                          : "bg-white/5 border-white/10 text-zinc-300 hover:bg-white/10"
+                      } font-poppins`}
+                    >
+                      Emerald Gold
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setCardTheme("gold")}
+                      className={`px-3 py-2.5 rounded-xl border text-xs font-semibold transition-all ${
+                        cardTheme === "gold"
+                          ? "bg-secondary/20 border-secondary text-secondary"
+                          : "bg-white/5 border-white/10 text-zinc-300 hover:bg-white/10"
+                      } font-poppins`}
+                    >
+                      Royal Gold
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setCardTheme("night")}
+                      className={`px-3 py-2.5 rounded-xl border text-xs font-semibold transition-all ${
+                        cardTheme === "night"
+                          ? "bg-secondary/20 border-secondary text-secondary"
+                          : "bg-white/5 border-white/10 text-zinc-300 hover:bg-white/10"
+                      } font-poppins`}
+                    >
+                      Starry Night
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setCardTheme("crimson")}
+                      className={`px-3 py-2.5 rounded-xl border text-xs font-semibold transition-all ${
+                        cardTheme === "crimson"
+                          ? "bg-secondary/20 border-secondary text-secondary"
+                          : "bg-white/5 border-white/10 text-zinc-300 hover:bg-white/10"
+                      } font-poppins`}
+                    >
+                      Crimson Amber
+                    </motion.button>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest block">Card Font</label>
-                  <select
-                    value={cardFont}
-                    onChange={(e) => setCardFont(e.target.value as any)}
-                    className="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-[#060c08] text-zinc-100 focus:outline-none focus:border-secondary text-sm font-poppins"
-                  >
-                    <option value="amiri" className="bg-zinc-900 text-zinc-100">Traditional Amiri</option>
-                    <option value="poppins" className="bg-zinc-900 text-zinc-100">Sleek Poppins</option>
-                  </select>
+                  <div className="flex gap-2 w-full">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setCardFont("amiri")}
+                      className={`flex-1 px-3 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
+                        cardFont === "amiri"
+                          ? "bg-secondary/20 border-secondary text-secondary"
+                          : "bg-white/5 border-white/10 text-zinc-300 hover:bg-white/10"
+                      } font-poppins`}
+                    >
+                      <span className="font-amiri">Traditional Amiri</span>
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setCardFont("poppins")}
+                      className={`flex-1 px-3 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
+                        cardFont === "poppins"
+                          ? "bg-secondary/20 border-secondary text-secondary"
+                          : "bg-white/5 border-white/10 text-zinc-300 hover:bg-white/10"
+                      } font-poppins`}
+                    >
+                      <span>Sleek Poppins</span>
+                    </motion.button>
+                  </div>
                 </div>
               </div>
 
