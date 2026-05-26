@@ -39,9 +39,9 @@ export default function DuasPage() {
     {
       id: "slaughter-before",
       title: "Dua Before Animal Sacrifice",
-      arabic: "إِنِّي وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا ۖ وَمَا أَنَا مِنَ الْمُشْرِكِينَ. إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ. لَا شَرِيكَ لَهُ ۖ وَبِذَٰلِكَ أُمِرْتُ وَأَنَا أَوَّلُ الْمُسْلِمِينَ. اللَّهُمَّ مِنْكَ وَلَكَ.",
-      english: "I have turned my face single-mindedly towards the One who created the heavens and the earth, and I am not of the polytheists. Verily my prayer, my sacrifice, my living and my dying are for Allah, Lord of the Worlds. He has no partner, and of this I am commanded, and I am the first of those who submit. O Allah, this is from You and for You.",
-      speechText: "Inni wajjahtu wajhiya lilladhi fataras samawati wal arda hanifaw wa ma ana minal mushrikin. Inna salati wa nusuki wa mahyaya wa mamati lillahi rabbil 'alamin. La sharika lahu wa bidhalika umirtu wa ana awwalul muslimin. Allahumma minka wa lak.",
+      arabic: "إِنِّي وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا ۖ وَمَا أَنَا مِنَ الْمُشْرِكِينَ. إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ. لَا شَرِيكَ لَهُ ۖ وَبِذَٰلِكَ أُمِرْتُ وَأَنَا أَوَّلُ الْمُسْلِمِينَ. اللَّهُمَّ مِنْكَ وَلَكَ. بِسْمِ اللَّهِ اللَّهُ أَكْبَرُ.",
+      english: "I have turned my face single-mindedly towards the One who created the heavens and the earth, and I am not of the polytheists. Verily my prayer, my sacrifice, my living and my dying are for Allah, Lord of the Worlds. He has no partner, and of this I am commanded, and I am the first of those who submit. O Allah, this is from You and for You. In the name of Allah, Allah is the Greatest.",
+      speechText: "Inni wajjahtu wajhiya lilladhi fataras samawati wal arda hanifaw wa ma ana minal mushrikin. Inna salati wa nusuki wa mahyaya wa mamati lillahi rabbil 'alamin. La sharika lahu wa bidhalika umirtu wa ana awwalul muslimin. Allahumma minka wa lak. Bismillahi Allahu Akbar.",
       when: "Recited right before laying down the animal for sacrifice."
     },
     {

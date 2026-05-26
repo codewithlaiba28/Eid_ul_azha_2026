@@ -22,9 +22,9 @@ export default function DuasSection() {
       id: "qurbani",
       title: "Qurbani ki Dua",
       subtitle: "دعاء الأضحية",
-      arabic: "إِنِّي وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا ۖ وَمَا أَنَا مِنَ الْمُشْرِكِينَ. اللَّهُمَّ مِنْكَ وَلَكَ.",
-      english: "I have turned my face single-mindedly towards the One who created the heavens and the earth, and I am not of the polytheists. O Allah, this sacrifice is from You and for You.",
-      recitationText: "Inni wajjahtu wajhiya lilladhi fataras samawati wal arda hanifaw wa ma ana minal mushrikin. Allahumma minka wa lak.",
+      arabic: "إِنِّي وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا ۖ وَمَا أَنَا مِنَ الْمُشْرِكِينَ. اللَّهُمَّ مِنْكَ وَلَكَ. بِسْمِ اللَّهِ اللَّهُ أَكْبَرُ.",
+      english: "I have turned my face single-mindedly towards the One who created the heavens and the earth, and I am not of the polytheists. O Allah, this sacrifice is from You and for You. In the name of Allah, Allah is the Greatest.",
+      recitationText: "Inni wajjahtu wajhiya lilladhi fataras samawati wal arda hanifaw wa ma ana minal mushrikin. Allahumma minka wa lak. Bismillahi Allahu Akbar.",
       benefit: "Recited right before performing the animal sacrifice (Qurbani).",
     },
     {
