@@ -13,16 +13,17 @@ export default function HeroSection() {
     seconds: 0,
   });
 
-  // Target Date: June 7, 2026 (or adjusted dynamically to remain positive)
+  // Target Date: May 26, 2026 at Maghrib (approx 18:45) Arabian Standard Time (UTC+3)
+  // In the Islamic calendar, the day begins at sunset the evening before.
   useEffect(() => {
     let targetYear = 2026;
-    let targetDate = new Date(`June 7, ${targetYear} 00:00:00`).getTime();
+    let targetDate = new Date(`May 26, ${targetYear} 18:45:00 GMT+0300`).getTime();
     
-    // If June 7, 2026 has already passed in the user's local timeline, push to next year
+    // If Eid has already passed, push to next year (approximate for 2027)
     const now = new Date().getTime();
     if (targetDate < now) {
       targetYear = new Date().getFullYear() + 1;
-      targetDate = new Date(`June 7, ${targetYear} 00:00:00`).getTime();
+      targetDate = new Date(`May 15, ${targetYear} 18:45:00 GMT+0300`).getTime();
     }
 
     const interval = setInterval(() => {
